@@ -3,40 +3,43 @@
 ## Current Objective
 
 - Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001 + feat-003 merged to main (2026-08-03). Next: feat-004.
-- Branch / commit: main @ `9e10eb8` (merge of PR #1; feat-003 via PR #2 `960b6af`)
+- Current status: feat-001/002/003/004 on main. Next: feat-005.
+- Branch / commit: main @ `9e59b91` (feat-004 merged via PR #3 `6007566`)
 
 ## Completed This Session
 
-- [x] feat-001 - Scaffold Vite + React app (Vite 8.2.0, React 19.2.8) — PR #1 MERGED
-- [x] feat-003 - Install dependencies + scripts — PR #2 MERGED (stacked, base feat-001)
-- [x] ESLint decision: flat config `eslint.config.js` replaces template oxlint
-- [x] ADR-009: runtime bumped to Node 22 LTS (jsdom 30 requires ^22.22.2;
-      crashed on Node 20 with `webidl.util.markAsUncloneable is not a function`)
-- [x] ADR-008: until feat-018, lint+build green is the merge gate; test step
-      stays red by design (accepted by user)
-- [x] CI verified on PR #2: test runs and fails 4/5 exactly like local (red by design)
+- [x] Harness startup followed: read feature_list.json, progress.md, decisions.md,
+      session-handoff.md; ran ./init.sh before editing (test step red-by-design
+      aborts init.sh until feat-018; build verified separately)
+- [x] feature_list.json corrected: merge evidence (PR #1/#2, merge commits
+      9e10eb8/960b6af) recorded for feat-001/003
+- [x] feat-004 - tokens.css: all tokens from docs/design-system.md as CSS custom
+      properties under :root — colors (incl. --color-accent-hover via color-mix),
+      font family/weights, type scale, radii, 4px spacing scale, breakpoints,
+      max-width, transitions — PR #3 MERGED (`6007566`)
+- [x] package-lock.json engines >=22 synced (`9e59b91`)
 
 ## Verification Evidence
 
 | Check | Command | Result | Notes |
 |---|---|---|---|
+| Init | ./init.sh | install+lint pass; test aborts by design | run build separately |
 | Lint | npm run lint | PASS | eslint . clean |
 | Build | npm run build | PASS | dist/ generated |
+| Format | npx prettier --check src/styles/tokens.css | PASS | |
 | Test | npm test | RED (4/1) | by design until feat-018 (ADR-008) |
-| CI | gh pr checks | lint+build pass, test red-by-design | Node 22 now |
+| CI | gh pr checks 3 | lint+build pass, test red-by-design | merged per ADR-008 |
 
 ## Files Changed
 
-- feat-001/003 merged into main: scaffold, eslint.config.js, package.json,
-  ci.yml, .nvmrc (22), AGENTS.md (lint/DoD/merge policy, Node 22 note),
-  docs/decisions.md (ADR-008, ADR-009), progress.md, session-handoff.md
+- `src/styles/tokens.css` (new, feat-004)
+- `feature_list.json` (evidence + feat-004 done, feat-005 active)
+- `package-lock.json` (engines sync)
+- `progress.md`, `session-handoff.md`
 
 ## Decisions Made
 
-- Merge policy until feat-018: lint + build green suffices (ADR-008).
-- Runtime: Node 22 LTS (ADR-009); local Node 26 also fine.
-- Stacked-PR pattern worked; used `--merge` (no squash).
+- Nothing new; applied ADR-007/008 as written.
 
 ## Blockers / Risks
 
@@ -45,13 +48,13 @@
 ## Next Session Startup
 
 1. Read `AGENTS.md`.
-2. Read `feature_list.json` and `progress.md`.
+2. Read `feature_list.json`, `progress.md`, `docs/decisions.md`.
 3. Review this handoff.
-4. Run `./init.sh` (install + lint + build).
-5. Branch from main: `git checkout -b feat/feat-004-create-tokens-css`.
+4. Run `./init.sh` (test step aborts it by design until feat-018; then run
+   `npm run build` separately).
+5. Branch from main: `git checkout -b feat/feat-005-load-space-grotesk-font`.
 
 ## Recommended Next Step
 
-- feat-004: create `src/styles/tokens.css` with every token from
-  docs/design-system.md (colors, fonts, sizes, radii, spacing, motion) as CSS
-  custom properties under `:root` — single source for the design system.
+- feat-005: add Space Grotesk (400/500/700) via Google Fonts preconnect+link in
+  index.html (font is already referenced by `--font-family` in tokens.css).

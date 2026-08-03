@@ -4,17 +4,17 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-004 - Create tokens.css
+**Active Feature:** feat-005 - Load Space Grotesk font
 
 ## Status
 
 ### What's Done
 
 - [x] feat-002 - Initialize git repository: git init (main), .gitignore, initial commit `68206bc`
-- [x] feat-001 - Scaffold Vite + React app (Vite 8.2.0, React 19.2.8); commit `8ba49cf`, merged to main via PR #1
-- [x] feat-003 - Install dependencies + scripts (vitest 4, RTL, jest-dom, jsdom 30, playwright 1.62, prettier, eslint 10); ESLint over oxlint; commit `1c164e1`, merged via PR #2
-- [x] Merge policy decided (ADR-008): until feat-018, lint+build green suffices; test step red by design
-- [x] Runtime moved to Node 22 LTS (ADR-009): jsdom 30 needs ^22.22.2; CI green except by-design test gate
+- [x] feat-001 - Scaffold Vite + React app (Vite 8.2.0, React 19.2.8); commit `8ba49cf`, merged via PR #1 (`9e10eb8`)
+- [x] feat-003 - Install dependencies + scripts; ESLint over oxlint; Node 22 runtime (ADR-009); commits `1c164e1`, `10a0c9e`, merged via PR #2 (`960b6af`)
+- [x] feat-004 - tokens.css with every design-system token under :root; commit `f7c8644`, merged via PR #3 (`6007566`)
+- [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
@@ -24,9 +24,9 @@
 
 ### What's Next
 
-1. feat-004 - Create tokens.css from docs/design-system.md
-2. feat-005 - Load Space Grotesk font
-3. feat-006 - Base styles
+1. feat-005 - Load Space Grotesk font (400/500/700) in index.html
+2. feat-006 - Base styles (body, h1-h3, links, selection)
+3. feat-007 - Focus rings and reduced motion
 
 ## Blockers / Risks
 
@@ -37,35 +37,38 @@
 ## Decisions Made
 
 - **Platzi-inspired dark theme**: tokens extracted from platzi.com, defined once
-  in docs/design-system.md. Alternatives considered: light theme, custom palette.
-- **Space Grotesk as font**: substitute for Platzi's proprietary Roobert.
+  in docs/design-system.md.
+- **Space Grotesk as font**: substitute for Platzi's proprietary Roobert (ADR-002).
 - **Vitest + Playwright as verification**: unit/smoke via Vitest + RTL,
-  visual/UX via Playwright specs with screenshots.
-- **CSS Modules**: component-scoped styling, no extra dependencies.
-- **Single content source**: data/site.js holds profile, skills, projects, links.
-- **CI + GitHub Pages**: lint/test/build (+e2e) on push/PR; static deploy to Pages
-  (e2e job planned as feat-022, Pages workflow as feat-023).
+  visual/UX via Playwright specs with screenshots (ADR-003).
+- **CSS Modules**: component-scoped styling, no extra dependencies (ADR-004).
+- **Single content source**: data/site.js holds profile, skills, projects, links (ADR-005).
+- **CI + GitHub Pages**: lint/test/build (+e2e) on push/PR; Pages deploy planned
+  as feat-023 (ADR-006).
 - **Branch per feature**: feat/<id>-<slug> from main, atomic commit per feature,
-  merged via PR after gates pass. Alternatives considered: main-only commits.
+  merged via PR after gates pass (ADR-007).
+- **Red-test merge policy**: lint+build green suffices until feat-018 (ADR-008).
+- **Node 22 LTS runtime**: .nvmrc 22, ci.yml 22, engines >=22 (ADR-009).
 
 ## Files Modified This Session
 
-- `feature_list.json` - task tracker (21 tasks)
-- `docs/design-system.md` - design tokens single source
-- `src/__tests__/App.test.jsx`, `e2e/portfolio.spec.js` - ready-made test cases
-- `vitest.config.js`, `playwright.config.js`, `tests/setup.js` - test configs
-- `.github/workflows/ci.yml` - CI workflow
-- `.gitignore` - initial version
+- `feature_list.json` - merge evidence for feat-001/003, feat-004 done, feat-005 active
+- `package-lock.json` - engines >=22 synced via npm install
+- `src/styles/tokens.css` - NEW, feat-004 design tokens
+- `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
 
 - [x] Dev server serves default page: HTTP 200 at http://localhost:5173 (Vite 8.2.0)
 - [x] Lint clean: `npm run lint` (eslint .) passes
 - [x] Build passes: `vite build`, dist/ generated
+- [x] Prettier clean: `npx prettier --check` on tokens.css
 - [ ] Tests pass: [pending - App gates go green at feat-018; npm test currently 4 failed / 1 passed, red by design]
 
 ## Notes for Next Session
 
-- feat-001 + feat-003 are on main (PR #1, PR #2 merged 2026-08-03).
+- Startup: read AGENTS.md, feature_list.json, progress.md, docs/decisions.md,
+  session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
+  design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- Next feature: feat-004 tokens.css from docs/design-system.md.
+- feat-004 (tokens.css) on main. Next: feat-005 Space Grotesk font in index.html.

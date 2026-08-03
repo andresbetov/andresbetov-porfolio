@@ -32,8 +32,8 @@
       "name": "Create tokens.css",
       "description": "src/styles/tokens.css with every token from docs/design-system.md (colors, fonts, sizes, radii, spacing, motion), exported as CSS custom properties under :root",
       "dependencies": ["feat-003"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "src/styles/tokens.css created: all tokens from docs/design-system.md as CSS custom properties under :root (7 colors + accent-hover via color-mix, font family/weights, h1-h3/body/small sizes + line-heights, radii 2/4/8px, 4px spacing scale 4-96, breakpoints 768/1024, max-width 1120, transitions 150/200ms); commit f7c8644; verification: prettier check, eslint ., vite build pass; npm test red-by-design per ADR-008; PR #3 merged to main (merge commit 6007566)",
       "branch": "feat/feat-004-create-tokens-css"
     },
     {
@@ -41,7 +41,7 @@
       "name": "Load Space Grotesk font",
       "description": "Add Space Grotesk (400/500/700) via Google Fonts in index.html; font stacks reference tokens",
       "dependencies": ["feat-004"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-005-load-space-grotesk-font"
     },
