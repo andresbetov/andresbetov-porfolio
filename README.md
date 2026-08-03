@@ -1,7 +1,7 @@
 # andresbetov — Portfolio
 
 Fast, minimalist, professional portfolio site for **Andres Bermudez** (`andresbetov`),
-systems engineering student and fullstack developer in Colombia — someday on Mars. 🪐
+systems engineering student and fullstack developer in Colombia.
 
 ## Stack
 
@@ -13,14 +13,15 @@ systems engineering student and fullstack developer in Colombia — someday on M
 
 ## Commands
 
-| Command            | Description                 |
-| ------------------ | --------------------------- |
-| `npm run dev`      | Start the dev server        |
-| `npm run build`    | Production build            |
-| `npm run lint`     | Lint                        |
-| `npm test`         | Vitest smoke tests          |
-| `npm run test:e2e` | Playwright specs (chromium) |
-| `npm run format`   | Prettier formatting         |
+| Command            | Description                  |
+| ------------------ | ---------------------------- |
+| `npm run dev`      | Start the dev server         |
+| `npm run build`    | Production build             |
+| `npm run lint`     | Lint                         |
+| `npm test`         | Vitest smoke tests           |
+| `npm run test:e2e` | Playwright specs (chromium)  |
+| `npm run format`   | Prettier formatting          |
+| `npm run preview`  | Preview the production build |
 
 ## Project structure
 
