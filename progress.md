@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** feat-018 - Vitest smoke tests green
+**Active Feature:** feat-019 - Playwright specs green
 
 ## Status
 
@@ -27,19 +27,20 @@
 - [x] feat-015 - Responsive layout: tablet 768-1024 two-column grids (About facts, Skills cards, Projects cards) via max-width 1024px; mobile navbar now an intentional stacked layout (logo row + full-width links row, space-between, tighter gaps, no per-link wrapping, overflow 0 at 320/390 - was wrapping haphazardly before); mobile scroll-margin-top bumped to 96px for the taller nav; commit `8c4a7a7`, merged via PR #14 (`555e37d`); vitest 5/5, e2e 10/10, lint+build+prettier green; breakpoints audit-verified at 768/1024/1025/1440
 - [x] feat-016 - Hover and motion states: 150ms ease transitions for color/border on buttons (hero primary/secondary, contact CTA), nav logo+links, footer socials, project links; card hover fill `--color-surface-2` + border color on About facts, Skills cards, Projects cards (design-system Motion section + surface-2 "hover fills" token); reduced-motion already handled globally in index.css; commit `074ff06`; vitest 5/5, e2e 10/10 (hover gate green), lint+build+prettier green
 - [x] feat-017 - Fix 320px overflow: audit spec at 320/300/280 shows overflow 0 and 0 offenders (long repo-name titles wrap at their hyphen break opportunities - verified via probe spec); grids already fluid minmax(0,1fr); explicit 3/2/1 breakpoints kept, auto-fit rejected (ADR-012); hardened project card titles with overflow-wrap: break-word (data-driven content); commit `a3fdacd`; vitest 5/5, e2e 10/10, lint+build+prettier green
+- [x] feat-018 - Vitest smoke tests green: evidence pass - 5/5 gates green since feat-013, re-verified (hero name+tagline, four nav anchors, three #projects GitHub cards, social hrefs, no 320px overflow); no code changes; merged via PR #17 (`f6a21bf`)
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-017 committed as `a3fdacd`, pending PR merge)
+- Nothing in progress (feat-018 evidence recorded, merged via PR #17)
 
 ### What's Next
 
-1. feat-018 - Vitest smoke tests green (5/5 already since feat-013 - record evidence)
-2. feat-019 - Playwright specs green (10/10 already since feat-013 - record evidence)
-3. feat-020 - Meta tags and favicon
+1. feat-019 - Playwright specs green (10/10 already since feat-013 - record evidence)
+2. feat-020 - Meta tags and favicon
+3. feat-021 - README and final audit
 
 ## Blockers / Risks
 
@@ -67,9 +68,7 @@
 
 ## Files Modified This Session
 
-- `src/components/Projects/Projects.module.css` - overflow-wrap: break-word on card titles (320px hardening)
-- `docs/decisions.md` - ADR-012 (keep explicit grid breakpoints over auto-fit)
-- `feature_list.json` - feat-017 done (a3fdacd), feat-018 active
+- `feature_list.json` - feat-018 done (evidence pass), feat-019 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -100,8 +99,8 @@
   e2e; explicit outside paths are ignored), run `npx playwright test <name>
 --reporter=line` (auto-starts dev server via webServer), delete the temp
   spec; never touch e2e/portfolio.spec.js.
-- feat-018 next: vitest 5/5 already green since feat-013 - evidence-recording pass only.
-  After it: feat-019 (e2e evidence pass), feat-020 (meta tags + favicon).
+- feat-019 next: e2e 10/10 already green since feat-013 - evidence-recording pass
+  only. After it: feat-020 (meta tags + favicon - real work).
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
 - Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
   hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.
