@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** Plan complete - all 23 features done (feat-023 pending PR merge + deploy verification)
+**Active Feature:** Complete - all 23 features shipped; site live at https://andresbetov.github.io/andresbetov-porfolio/
 
 ## Status
 
@@ -32,21 +32,18 @@
 - [x] feat-020 - Meta tags and favicon: title "Andres Bermudez - Software Engineer", meta description (persona + projects), OG tags (type website, title, description, url = expected Pages URL), theme-color #13161c (--color-bg); favicon.svg replaced Vite template with SVG 'AB' monogram in accent green #0ae98a on bg rounded tile (Space Grotesk 700); commit `76cde93`, merged via PR #19 (`c4f1151`); head audit temp spec verified all tags + favicon 200 + mark content; vitest 5/5, e2e 10/10, lint+build green
 - [x] feat-021 - README and final audit: README pre-existing, polished (emoji removed, preview command added, socials without www. per convention, Apache-2.0 LICENSE verified); final audit done code-level + scripted (subagents unavailable): zero hardcoded colors/fonts outside tokens.css, 35/35 used tokens defined (6 unused are reserves), 15/15 interactive elements visible+focusable+transitioned+anchored, e2e 10/10; no P0/P1 findings; commit `4d68038`, merged via PR #20 (`bdc05b7`)
 - [x] feat-022 - CI e2e job: e2e job added to .github/workflows/ci.yml (ubuntu-latest, Node 22, npm ci, playwright install --with-deps chromium, npm run test:e2e, upload artifacts portfolio-screenshots + playwright-report with if: always()); verify job unchanged; commit `fedef90`, merged via PR #21 (`5661e11`); both CI jobs green on PR
-- [x] feat-023 - GitHub Pages deploy: deploy job on push to main (needs verify+e2e, pages:write + id-token:write, environment github-pages, concurrency group pages): npm ci, vite build --base=/andresbetov-porfolio/, configure-pages, upload-pages-artifact (dist/), deploy-pages; base rewrite verified locally; Pages enabled via API (build_type workflow), URL matches og:url; commit `4044826`; pending PR merge + live verification
+- [x] feat-023 - GitHub Pages deploy: deploy job on push to main (needs verify+e2e, pages:write + id-token:write, environment github-pages, concurrency group pages): npm ci, vite build --base=/andresbetov-porfolio/, configure-pages, upload-pages-artifact (dist/), deploy-pages; base rewrite verified locally; Pages enabled via API (build_type workflow), URL matches og:url; commit `4044826`, merged via PR #22 (`63ea618`); deploy job ran success on main; LIVE VERIFIED: HTTP 200, title + favicon + assets correct; follow-up fix (PR #23, `82a4d55`): html reporter for real playwright-report artifact + README live URL; harness validation 100/100 - PLAN COMPLETE
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-023 committed as `4044826`, pending PR merge + live deploy verification)
+- Nothing - plan complete
 
 ### What's Next
 
-1. After feat-023 merge: verify live site https://andresbetov.github.io/andresbetov-porfolio/ (200, favicon, assets)
-2. Update README with live URL
-3. Final harness validation: node .opencode/skills/harness-creator/scripts/validate-harness.mjs --target .
-4. Plan complete: all 23 features done
+- None - all 23 features shipped. Live: https://andresbetov.github.io/andresbetov-porfolio/
 
 ## Blockers / Risks
 
@@ -75,7 +72,9 @@
 ## Files Modified This Session
 
 - `.github/workflows/ci.yml` - deploy job (configure-pages, upload-pages-artifact, deploy-pages)
-- `feature_list.json` - feat-023 done (4044826)
+- `playwright.config.js` - html reporter (open: never) so the report artifact is real
+- `README.md` - live URL line
+- `feature_list.json` - feat-023 done (4044826, PR #22) + plan complete
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -106,8 +105,9 @@
   e2e; explicit outside paths are ignored), run `npx playwright test <name>
 --reporter=line` (auto-starts dev server via webServer), delete the temp
   spec; never touch e2e/portfolio.spec.js.
-- Plan state: all 23 features implemented (feat-023 deploy pending live
-  verification). Live URL: https://andresbetov.github.io/andresbetov-porfolio/
+- Plan state: COMPLETE - all 23 features shipped. Live:
+  https://andresbetov.github.io/andresbetov-porfolio/ (verified HTTP 200).
+  Harness validation: 100/100.
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
 - Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
   hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.

@@ -204,7 +204,7 @@
       "description": "Add Pages workflow to .github/workflows/ci.yml: build on main push and deploy dist to GitHub Pages",
       "dependencies": ["feat-022"],
       "status": "done",
-      "evidence": "commit 4044826 on feat/feat-023-github-pages-deploy; deploy job added to ci.yml (push to main only, needs verify+e2e, permissions pages:write + id-token:write, environment github-pages with page_url output, concurrency group pages): npm ci, vite build --base=/andresbetov-porfolio/ (local dev/e2e unaffected), configure-pages, upload-pages-artifact (dist/), deploy-pages; base rewrite verified locally (favicon + assets prefixed); Pages enabled via API with build_type=workflow - html_url https://andresbetov.github.io/andresbetov-porfolio/ matches og:url from feat-020",
+      "evidence": "commit 4044826 on feat/feat-023-github-pages-deploy, merged via PR #22 (63ea618); deploy job added to ci.yml (push to main only, needs verify+e2e, permissions pages:write + id-token:write, environment github-pages with page_url output, concurrency group pages): npm ci, vite build --base=/andresbetov-porfolio/ (local dev/e2e unaffected), configure-pages, upload-pages-artifact (dist/), deploy-pages; base rewrite verified locally (favicon + assets prefixed); Pages enabled via API with build_type=workflow; deploy job ran success on main push; LIVE VERIFIED: https://andresbetov.github.io/andresbetov-porfolio/ returns HTTP 200 with correct title, favicon and assets at /andresbetov-porfolio/ paths; follow-up fix 82a4d55 (PR #23): html reporter so playwright-report artifact is real + README live URL; harness validation 100/100 - plan complete",
       "branch": "feat/feat-023-github-pages-deploy"
     }
   ]

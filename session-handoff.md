@@ -2,89 +2,49 @@
 
 ## Current Objective
 
-- Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001..023 implemented (feat-023 PR pending merge + live
-  deploy verification). Plan complete after verification.
-- Branch / commit: `feat/feat-023-github-pages-deploy` @ `4044826` (feature) +
-  records commit pending; PR #22 not opened yet.
+- Status: **PLAN COMPLETE** - all 23 features shipped and the site is LIVE.
+- Live: https://andresbetov.github.io/andresbetov-porfolio/ (verified HTTP 200)
+- Harness validation: 100/100 (all five subsystems at full score)
+- This handoff closes the project; keep it as the completion record.
 
-## Completed This Session
+## Final State
 
-- [x] feat-023 - GitHub Pages deploy (commit `4044826`):
-  - deploy job in ci.yml, push-to-main only, needs [verify, e2e]:
-    permissions pages:write + id-token:write; environment github-pages with
-    page_url output; concurrency group pages (no cancel).
-    Steps: npm ci, `npm run build -- --base=/andresbetov-porfolio/`,
-    configure-pages@v5, upload-pages-artifact@v3 (dist/), deploy-pages@v4.
-  - Local dev/e2e untouched: base flag passed only in the deploy build.
-    Verified: built dist/index.html rewrites favicon to
-    /andresbetov-porfolio/favicon.svg and assets to /andresbetov-porfolio/assets/...
-  - Pages ENABLED via API (POST /pages with build_type=workflow):
-    html_url = https://andresbetov.github.io/andresbetov-porfolio/ -
-    exactly matches og:url from feat-020. No repo-settings click needed.
-- [x] Note: vite build with the base flag overrides the default dist build;
-      subsequent local `npm run build` (no flag) produces the default-root
-      build again - no persistence in vite.config.js.
+- 23/23 features done, 23 PRs merged (PR #1..#23), every merge gated by CI
+  (verify + e2e jobs; deploy job runs on push to main).
+- Stack: Vite 8 + React 19, CSS Modules with token system
+  (src/styles/tokens.css from docs/design-system.md), Space Grotesk,
+  Vitest smoke tests (5 gates) + Playwright e2e (10 gates) + GitHub Pages.
+- Quality gates on every merge since feat-018 (ADR-008 ended):
+  npm ci, lint, test (5/5), build, e2e (10/10) - the e2e job uploads
+  screenshots and the HTML report as artifacts.
+- Final audit (feat-021): zero hardcoded colors/fonts outside tokens.css,
+  35/35 used tokens defined, 15/15 interactive elements conformant, no
+  P0/P1 findings.
 
-## Skills Usage Notes (for future sessions)
+## Final Records (this session)
 
-- harness-creator skill: full pipeline (init.sh, records, atomic commits, PR);
-  final validation step pending (validate-harness.mjs).
-- No subagents used (user instruction; infra still down).
-- Frontend-design not needed (workflow change only).
+- feat-023: deploy job in ci.yml (configure-pages/upload-pages-artifact/
+  deploy-pages, base=/andresbetov-porfolio/ deploy-only flag), commit
+  `4044826`, PR #22 merged `63ea618`; deploy job success on main; live
+  verified: HTTP 200, title "Andres Bermudez - Software Engineer",
+  favicon + assets at /andresbetov-porfolio/ paths.
+- Follow-up fix: html reporter (open: never) in playwright.config.js so the
+  playwright-report artifact has files + README live URL line; PR #23 merged
+  `82a4d55`.
+- feature_list.json/progress.md/session-handoff.md: final state recorded.
 
-## Verification Evidence
+## Deferred / Open Items (non-blocking)
 
-| Check      | Command                     | Result                 | Notes                             |
-| ---------- | --------------------------- | ---------------------- | --------------------------------- |
-| Init       | ./init.sh                   | PASS                   | vitest 5/5 inside                 |
-| YAML       | npx prettier --check ci.yml | PASS                   |                                   |
-| Base build | npm run build -- --base=... | PASS                   | favicon + assets rewritten        |
-| Pages API  | gh api POST /pages          | PASS                   | build_type=workflow, html_url set |
-| Test       | npm test                    | 5 passed (5)           |                                   |
-| e2e        | npm run test:e2e            | 10 passed (10) locally |                                   |
+- og:image not set (no 1200x630 social asset); og:url points to the Pages URL.
+- README/docs mention the repo-name typo: andresbetov-**porfolio**.
+- Subagent infra (ui-designer / qa-visual-tester) was down all project;
+  audits were code-level + scripted. If the infra recovers, a real
+  ui-designer pass over the final UI is the one audit never completed.
+- Custom domain (if ever wanted) would require updating og:url + base flag.
 
-## Files Changed
+## Next Session Startup (if any follow-up work)
 
-- `.github/workflows/ci.yml` - deploy job (configure-pages, upload-pages-artifact, deploy-pages)
-- `feature_list.json` - feat-023 done (4044826)
-- `progress.md`, `session-handoff.md` - session records
-
-## Decisions Made
-
-- Deploy-only base flag (`--base=/andresbetov-porfolio/`) instead of setting
-  base in vite.config.js: keeps dev server and e2e (baseURL localhost:5173,
-  goto('/')) untouched.
-- Official Actions Pages flow (configure-pages/upload-pages-artifact/
-  deploy-pages) over third-party (peaceiris): native, fewer deps, environment
-  URL output.
-- Pages enabled through the API (no manual settings step).
-
-## Blockers / Risks
-
-- Subagent infra (ui-designer / qa-visual-tester) down: session-insert DB
-  error on spawn; user instructed not to use them.
-- Model cannot view images: numeric audits only; screenshots saved for user
-  review (/tmp/opencode/portfolio-*.png).
-- Deploy only triggers on push to main - the PR itself runs verify + e2e.
-
-## Next Session Startup
-
-1. Read `AGENTS.md`.
-2. Read `feature_list.json`, `progress.md`, `docs/decisions.md`.
-3. Review this handoff.
-4. Run `./init.sh`.
-5. On `feat/feat-023-github-pages-deploy`: wait for BOTH CI checks (verify +
-   e2e), merge PR #22, checkout main, pull, wait for the deploy job on main.
-
-## Recommended Next Step (plan completion)
-
-1. Wait for the `deploy` job on main to succeed (gh run watch).
-2. Verify live site: curl -sI https://andresbetov.github.io/andresbetov-porfolio/
-   (expect 200), fetch index.html and check asset/favicon hrefs, and the
-   deployment status via gh api /repos/.../pages (status: deployed).
-3. Update README: add live URL line ("Live: https://andresbetov.github.io/andresbetov-porfolio/").
-4. Final harness validation:
-   node .opencode/skills/harness-creator/scripts/validate-harness.mjs --target .
-5. Mark the plan complete in progress.md/feature_list.json (feat-023 live
-   evidence: deployment URL + 200 check) and finalize this handoff.
+1. Read AGENTS.md, feature_list.json, progress.md, docs/decisions.md.
+2. Run ./init.sh (verification entrypoint; all green).
+3. All gates: npm run lint, npm test (5/5), npm run test:e2e (10/10),
+   npm run build - must stay green for any future change.
