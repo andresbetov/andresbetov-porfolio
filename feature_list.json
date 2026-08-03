@@ -86,8 +86,8 @@
       "name": "Section shells and footer",
       "description": "Section components with 96px (64px mobile) padding and H2 headings; footer with social links (GitHub, LinkedIn, X, Instagram) with correct hrefs",
       "dependencies": ["feat-009"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "src/components/Section/Section.jsx + module.css (96px padding, 64px mobile, H2 heading, scroll-margin-top 64px) rendered for about/skills/projects/contact; src/components/Footer/Footer.jsx + module.css with social links (GitHub, LinkedIn www., X, Instagram www. - hrefs copied from smoke test) + copyright; content from site.js sections/socials/copyright; commit 895f18b; verification: prettier, eslint, vite build pass; vitest 4 passed / 1 failed (socials gate green; projects by design); e2e 9 passed / 1 failed (sections+anchors gate green; projects by design), no console errors/overflow; PR #9 merged to main (merge commit 7900b4c); WARNING for feat-013: footer GitHub link matches projects prefix filter, count conflict must be resolved",
       "branch": "feat/feat-010-section-shells-and-footer"
     },
     {
@@ -95,7 +95,7 @@
       "name": "About section",
       "description": "Bio: systems engineering student + fullstack developer from Colombia, space-exploration interest, brief professional summary",
       "dependencies": ["feat-010"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-011-about-section"
     },

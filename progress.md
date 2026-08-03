@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-010 - Section shells and footer
+**Active Feature:** feat-011 - About section
 
 ## Status
 
@@ -19,6 +19,7 @@
 - [x] feat-007 - Focus rings (focus-visible 2px accent) + reduced motion; commit `0dbd17a`, merged via PR #6 (`63385c5`)
 - [x] feat-008 - Navbar (fixed, logo, 4 anchor links, accent hover) + src/data/site.js; commit `43717e2`, merged via PR #7 (`3bad026`); nav + 320px overflow vitest gates now green
 - [x] feat-009 - Hero (H1, tagline, primary/secondary CTAs); commit `71ca136`, merged via PR #8 (`8aeae16`); hero vitest gate + e2e button-hover gate now green
+- [x] feat-010 - Section shells + footer with social links; commit `895f18b`, merged via PR #9 (`7900b4c`); socials vitest gate + e2e sections/anchors gate now green
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -29,9 +30,9 @@
 
 ### What's Next
 
-1. feat-010 - Section shells and footer (social links gate)
-2. feat-011 - About section
-3. feat-012 - Skills section
+1. feat-011 - About section (bio content)
+2. feat-012 - Skills section (card grid)
+3. feat-013 - Projects section (3 cards + GitHub links)
 
 ## Blockers / Risks
 
@@ -57,10 +58,11 @@
 
 ## Files Modified This Session
 
-- `src/components/Hero/` - feat-009 hero (jsx + module.css)
-- `src/data/site.js` - hero content
-- `src/App.jsx` - renders Navbar + main > Hero
-- `feature_list.json` - feat-009 done, feat-010 active
+- `src/components/Section/` - feat-010 section shell (jsx + module.css)
+- `src/components/Footer/` - feat-010 footer (jsx + module.css)
+- `src/data/site.js` - sections, socials, copyright
+- `src/App.jsx` - renders section shells + footer
+- `feature_list.json` - feat-010 done, feat-011 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -69,8 +71,15 @@
 - [x] Lint clean: `npm run lint` (eslint .) passes
 - [x] Build passes: `vite build`, dist/ generated
 - [x] Prettier clean: `npx prettier --check` on changed files
-- [ ] Tests pass: 3 passed / 2 failed [projects, socials gates - green at their features; red by design until then]
-- [x] e2e regression (from feat-008): 8 passed / 2 failed (sections/projects by design); no console errors, no overflow
+- [ ] Tests pass: 4 passed / 1 failed [projects gate - green at feat-013; red by design until then]
+- [x] e2e regression (from feat-008): 9 passed / 1 failed (projects by design); no console errors, no overflow
+
+## Known Conflict (deferred to feat-013)
+
+- Footer GitHub link (https://github.com/andresbetov) matches the projects tests'
+  prefix filter (a[href^="https://github.com/andresbetov"]). With 3 project cards
+  the document will have 4 matching links, failing the "exactly 3" gates. Must be
+  resolved when building the projects section (feat-013).
 
 ## Notes for Next Session
 
@@ -78,5 +87,6 @@
   session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
   design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-009 on main. Next: feat-010 section shells + footer (social links gate).
+- feat-010 on main; section shells + footer live. Next: feat-011 about content.
 - tests/setup.js cleans up after each test (RTL auto-cleanup needed globals).
+- feat-013 count conflict: see 'Known Conflict' above.
