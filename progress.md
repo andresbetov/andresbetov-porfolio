@@ -11,20 +11,19 @@
 ### What's Done
 
 - [x] feat-002 - Initialize git repository: git init (main), .gitignore, initial commit `68206bc`
+- [x] feat-001 - Scaffold Vite + React app: create-vite react template (Vite 8.2.0, React 19.2.8) in repo root on branch `feat/feat-001-scaffold-vite-react-app`, dev server serves default page, lint+build pass; commit `8ba49cf`
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- [ ] feat-001 - Scaffold Vite + React app
-  - Details: npm create vite (react template), confirm dev server serves default page
-  - Blockers: none
+- Nothing in progress
 
 ### What's Next
 
-1. Complete feat-001 - Scaffold Vite + React app
-2. feat-003 - Install dependencies (vitest, RTL, playwright, prettier) + scripts
-3. feat-004 - Create tokens.css from docs/design-system.md
+1. feat-003 - Install dependencies (vitest, RTL, playwright, prettier) + scripts
+2. feat-004 - Create tokens.css from docs/design-system.md
+3. feat-005 - Load Space Grotesk font
 
 ## Blockers / Risks
 
@@ -57,13 +56,14 @@
 
 ## Evidence of Completion
 
-- [ ] Tests pass: [pending - no app yet]
-- [ ] Lint clean: [pending - no app yet]
-- [ ] Build passes: [pending - no app yet]
-- [ ] Manual verification: [pending - screenshots at 1440/390px once app exists]
+- [x] Dev server serves default page: HTTP 200 at http://localhost:5173 (Vite 8.2.0)
+- [x] Lint clean: oxlint (template default) passes via init.sh
+- [x] Build passes: `vite build` 123ms, dist/ generated
+- [ ] Tests pass: [pending - vitest arrives with feat-003]
 
 ## Notes for Next Session
 
-- Start with feat-001: scaffold the Vite app on branch
-  `feat/feat-001-scaffold-vite-react-app`, then run the verification commands
-  from AGENTS.md until all gates pass.
+- Start with feat-003: deps + scripts. Current create-vite template ships
+  **oxlint** (`.oxlintrc.json`, `lint: oxlint`) instead of the ESLint plan in
+  feature_list/AGENTS.md — decide at feat-003: keep oxlint or swap to
+  eslint + eslint.config.js (and drop .oxlintrc.json).

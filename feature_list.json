@@ -5,8 +5,8 @@
       "name": "Scaffold Vite + React app",
       "description": "Run npm create vite@latest with the react template in this directory; confirm npm run dev serves the default page",
       "dependencies": [],
-      "status": "not-started",
-      "evidence": "",
+      "status": "done",
+      "evidence": "create-vite react template (Vite 8.2.0, React 19.2.8): index.html, package.json, vite.config.js, src/{main,App,index}.{jsx,css}, public/, .oxlintrc.json copied into repo root, harness files untouched; npm run dev serves default page at localhost:5173 (HTTP 200); init.sh passes install, lint (oxlint), build; commit 8ba49cf",
       "branch": "feat/feat-001-scaffold-vite-react-app"
     },
     {
