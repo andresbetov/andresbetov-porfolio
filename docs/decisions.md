@@ -89,3 +89,21 @@ Chronological log of decisions for this project. One entry per decision.
 - **Decision:** One branch per feature (`feat/<id>-<slug>` from main), atomic commit per feature, merged via PR after gates pass.
 - **Alternatives:** Main-only commits.
 - **Consequences:** Each `feature_list.json` entry carries a `branch` field; git history mirrors the feature list.
+
+## ADR-011: Scope project-link gates to the projects section
+
+- **Date:** 2026-08-03
+- **Context:** The projects gates ("exactly three project cards linking to
+  GitHub") originally counted document-wide
+  `a[href^="https://github.com/andresbetov"]` matches. The footer GitHub link
+  satisfies that prefix, so once feat-013 adds 3 project cards the document
+  holds 4 matching links and the gates fail. The gates' intent is "three
+  project cards", not "three GitHub links anywhere".
+- **Decision:** Scope the gates to the projects section: vitest queries
+  `within(document.querySelector('#projects'))`, e2e uses
+  `#projects a[href^="https://github.com/andresbetov"]`. No assertion
+  strength is reduced; the footer link remains covered by the socials gate.
+- **Alternatives:** Remove the footer GitHub link (loses social gate coverage);
+  make one project card link to the profile URL (misrepresents the projects).
+- **Consequences:** feat-013 flips both projects gates to green (vitest 5/5,
+  e2e 10/10).

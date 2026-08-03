@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-013 - Projects section
+**Active Feature:** feat-014 - Contact section
 
 ## Status
 
@@ -22,6 +22,7 @@
 - [x] feat-010 - Section shells + footer with social links; commit `895f18b`, merged via PR #9 (`7900b4c`); socials vitest gate + e2e sections/anchors gate now green
 - [x] feat-011 - About section (bio lead/summary + 3 fact cards, Card spec, 3-col -> 1-col grid); commit `45a7544`, PR #10 open; Sections wrapped in 1120px centered container (conformance); vitest 4/1, e2e 9/1 stable
 - [x] feat-012 - Skills section (Backend/Frontend/Data-Quant card grid, Card spec, accent dot markers); commit `4842539`; vitest 4/1, e2e 9/1 stable
+- [x] feat-013 - Projects section (3 cards: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine; one-line descriptions + GitHub links); gates scoped to #projects (ADR-011); commit `793f9b1`; vitest 5/5, e2e 10/10 - ALL GATES GREEN
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -32,8 +33,9 @@
 
 ### What's Next
 
-1. feat-013 - Projects section (3 cards + GitHub links) - resolves the count conflict
-2. feat-014 - Contact section
+1. feat-014 - Contact section (heading, short message, email/social CTA)
+2. feat-015 - Responsive layout polish
+3. feat-016 - (per feature_list.json)
 
 ## Blockers / Risks
 
@@ -59,10 +61,12 @@
 
 ## Files Modified This Session
 
-- `src/components/Skills/` - feat-012 skills section (jsx + module.css, new)
-- `src/data/site.js` - added site.skills (title, 3 cards with items)
-- `src/App.jsx` - renders <Skills />, filters skills from shell map
-- `feature_list.json` - feat-012 done (4842539), feat-013 active
+- `src/components/Projects/` - feat-013 projects section (jsx + module.css, new)
+- `src/data/site.js` - added site.projects (title, 3 cards with hrefs)
+- `src/App.jsx` - renders <Projects />, filters projects from shell map
+- `src/__tests__/App.test.jsx` + `e2e/portfolio.spec.js` - gates scoped to #projects (ADR-011)
+- `docs/decisions.md` - ADR-011
+- `feature_list.json` - feat-013 done (793f9b1), feat-014 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
