@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** feat-020 - Meta tags and favicon
+**Active Feature:** feat-021 - README and final audit
 
 ## Status
 
@@ -29,19 +29,20 @@
 - [x] feat-017 - Fix 320px overflow: audit spec at 320/300/280 shows overflow 0 and 0 offenders (long repo-name titles wrap at their hyphen break opportunities - verified via probe spec); grids already fluid minmax(0,1fr); explicit 3/2/1 breakpoints kept, auto-fit rejected (ADR-012); hardened project card titles with overflow-wrap: break-word (data-driven content); commit `a3fdacd`; vitest 5/5, e2e 10/10, lint+build+prettier green
 - [x] feat-018 - Vitest smoke tests green: evidence pass - 5/5 gates green since feat-013, re-verified (hero name+tagline, four nav anchors, three #projects GitHub cards, social hrefs, no 320px overflow); no code changes; merged via PR #17 (`ea26b6c`); ADR-008 red-test merge policy ended
 - [x] feat-019 - Playwright specs green: evidence pass - 10/10 gates green since feat-013, re-verified (no overflow at 1440/768/390/320, no console/page errors, sections + anchor scroll, three project cards to right repos, primary button hover state, desktop/mobile screenshots to /tmp/opencode); no code changes; merged via PR #18 (`af515b0`)
+- [x] feat-020 - Meta tags and favicon: title "Andres Bermudez - Software Engineer", meta description (persona + projects), OG tags (type website, title, description, url = expected Pages URL), theme-color #13161c (--color-bg); favicon.svg replaced Vite template with SVG 'AB' monogram in accent green #0ae98a on bg rounded tile (Space Grotesk 700); commit `76cde93`; head audit temp spec verified all tags + favicon 200 + mark content; vitest 5/5, e2e 10/10, lint+build green
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-019 evidence recorded, pending PR merge)
+- Nothing in progress (feat-020 committed as `76cde93`, pending PR merge)
 
 ### What's Next
 
-1. feat-020 - Meta tags and favicon (title, description, Open Graph, theme-color, SVG 'AB' favicon in accent green)
-2. feat-021 - README and final audit
-3. feat-022 - CI e2e job (depends on feat-019, available once feat-020/021 done)
+1. feat-021 - README and final audit (minimal README; ui-designer + qa-visual-tester audits blocked by subagent infra - fall back to code-level + scripted audit)
+2. feat-022 - CI e2e job (depends on feat-019, available now)
+3. feat-023 - GitHub Pages deploy
 
 ## Blockers / Risks
 
@@ -69,7 +70,9 @@
 
 ## Files Modified This Session
 
-- `feature_list.json` - feat-019 done (evidence pass), feat-020 active
+- `index.html` - title, description, OG tags, theme-color, favicon link
+- `public/favicon.svg` - replaced Vite template mark with 'AB' monogram (accent green on bg tile)
+- `feature_list.json` - feat-020 done (76cde93), feat-021 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -100,8 +103,10 @@
   e2e; explicit outside paths are ignored), run `npx playwright test <name>
 --reporter=line` (auto-starts dev server via webServer), delete the temp
   spec; never touch e2e/portfolio.spec.js.
-- feat-020 next: meta tags + favicon (real work) - title, description, OG tags,
-  theme-color (--color-bg), SVG 'AB' favicon in accent green.
+- feat-021 next: README + final audit. Subagent infra down (DB error) - try
+  ui-designer once per AGENTS.md, fall back to code-level audit. README should
+  list social links WITHOUT www. (per AGENTS.md note: tests assert www. on
+  LinkedIn/Instagram hrefs but README lists them without).
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
 - Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
   hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.

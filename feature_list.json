@@ -176,8 +176,8 @@
       "name": "Meta tags and favicon",
       "description": "Title, description, Open Graph tags, theme-color, and a simple favicon (SVG 'AB' mark in accent green)",
       "dependencies": ["feat-019"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 76cde93 on feat/feat-020-meta-tags-and-favicon; title 'Andres Bermudez - Software Engineer', meta description (persona: software engineer + systems engineering student, Colombia; project names), OG tags (type website, title, description, url = expected Pages URL andresbetov.github.io/andresbetov-porfolio), theme-color #13161c (--color-bg), lang=en; favicon.svg replaced Vite template mark with SVG 'AB' monogram in accent green #0ae98a on --color-bg rounded tile (Space Grotesk 700); head audit temp spec verified all tags + favicon 200 + AB mark content; vitest 5/5, e2e 10/10, lint+build green; prettier note: .svg has no parser, skipped by global --write .",
       "branch": "feat/feat-020-meta-tags-and-favicon"
     },
     {
@@ -185,7 +185,7 @@
       "name": "README and final audit",
       "description": "Minimal README (project, stack, commands, links); run ui-designer audit and qa-visual-tester, fix any P0/P1 findings",
       "dependencies": ["feat-020"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-021-readme-and-final-audit"
     },
