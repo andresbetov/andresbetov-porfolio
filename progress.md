@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-005 - Load Space Grotesk font
+**Active Feature:** feat-006 - Base styles
 
 ## Status
 
@@ -14,6 +14,7 @@
 - [x] feat-001 - Scaffold Vite + React app (Vite 8.2.0, React 19.2.8); commit `8ba49cf`, merged via PR #1 (`9e10eb8`)
 - [x] feat-003 - Install dependencies + scripts; ESLint over oxlint; Node 22 runtime (ADR-009); commits `1c164e1`, `10a0c9e`, merged via PR #2 (`960b6af`)
 - [x] feat-004 - tokens.css with every design-system token under :root; commit `f7c8644`, merged via PR #3 (`6007566`)
+- [x] feat-005 - Space Grotesk font (400/500/700) loaded in index.html; commit `d752593`, merged via PR #4 (`071dbd9`)
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -24,9 +25,9 @@
 
 ### What's Next
 
-1. feat-005 - Load Space Grotesk font (400/500/700) in index.html
-2. feat-006 - Base styles (body, h1-h3, links, selection)
-3. feat-007 - Focus rings and reduced motion
+1. feat-006 - Base styles (body bg/text, h1-h3, links, selection)
+2. feat-007 - Focus rings and reduced motion
+3. feat-008 - Navbar with anchor links
 
 ## Blockers / Risks
 
@@ -52,9 +53,8 @@
 
 ## Files Modified This Session
 
-- `feature_list.json` - merge evidence for feat-001/003, feat-004 done, feat-005 active
-- `package-lock.json` - engines >=22 synced via npm install
-- `src/styles/tokens.css` - NEW, feat-004 design tokens
+- `index.html` - feat-005 Space Grotesk Google Fonts links
+- `feature_list.json` - feat-005 done, feat-006 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -71,4 +71,5 @@
   session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
   design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-004 (tokens.css) on main. Next: feat-005 Space Grotesk font in index.html.
+- feat-005 (font) on main. Next: feat-006 base styles. index.css currently holds
+  the Vite template styles — replace with tokens-based base styles.

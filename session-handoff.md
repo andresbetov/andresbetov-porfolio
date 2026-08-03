@@ -3,21 +3,18 @@
 ## Current Objective
 
 - Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001/002/003/004 on main. Next: feat-005.
-- Branch / commit: main @ `9e59b91` (feat-004 merged via PR #3 `6007566`)
+- Current status: feat-001..005 on main. Next: feat-006.
+- Branch / commit: main @ `071dbd9` (feat-005 merged via PR #4)
 
 ## Completed This Session
 
-- [x] Harness startup followed: read feature_list.json, progress.md, decisions.md,
-      session-handoff.md; ran ./init.sh before editing (test step red-by-design
-      aborts init.sh until feat-018; build verified separately)
-- [x] feature_list.json corrected: merge evidence (PR #1/#2, merge commits
-      9e10eb8/960b6af) recorded for feat-001/003
-- [x] feat-004 - tokens.css: all tokens from docs/design-system.md as CSS custom
-      properties under :root — colors (incl. --color-accent-hover via color-mix),
-      font family/weights, type scale, radii, 4px spacing scale, breakpoints,
-      max-width, transitions — PR #3 MERGED (`6007566`)
+- [x] feat-004 - tokens.css: all design-system tokens as CSS custom properties
+      under :root; PR #3 MERGED (`6007566`)
+- [x] feat-005 - Space Grotesk (400/500/700) Google Fonts links in index.html;
+      PR #4 MERGED (`071dbd9`)
 - [x] package-lock.json engines >=22 synced (`9e59b91`)
+- [x] feature_list.json corrected: merge evidence recorded, feat-004/005 done,
+      feat-006 active
 
 ## Verification Evidence
 
@@ -25,17 +22,17 @@
 |---|---|---|---|
 | Init | ./init.sh | install+lint pass; test aborts by design | run build separately |
 | Lint | npm run lint | PASS | eslint . clean |
-| Build | npm run build | PASS | dist/ generated |
-| Format | npx prettier --check src/styles/tokens.css | PASS | |
+| Build | npm run build | PASS | dist/ contains font links |
+| Format | npx prettier --check | PASS | tokens.css, index.html |
 | Test | npm test | RED (4/1) | by design until feat-018 (ADR-008) |
-| CI | gh pr checks 3 | lint+build pass, test red-by-design | merged per ADR-008 |
+| CI | gh pr checks 3, 4 | lint+build pass, test red-by-design | merged per ADR-008 |
 
 ## Files Changed
 
-- `src/styles/tokens.css` (new, feat-004)
-- `feature_list.json` (evidence + feat-004 done, feat-005 active)
+- `src/styles/tokens.css` (feat-004)
+- `index.html` (feat-005 font links)
+- `feature_list.json`, `progress.md`, `session-handoff.md`
 - `package-lock.json` (engines sync)
-- `progress.md`, `session-handoff.md`
 
 ## Decisions Made
 
@@ -52,9 +49,10 @@
 3. Review this handoff.
 4. Run `./init.sh` (test step aborts it by design until feat-018; then run
    `npm run build` separately).
-5. Branch from main: `git checkout -b feat/feat-005-load-space-grotesk-font`.
+5. Branch from main: `git checkout -b feat/feat-006-base-styles`.
 
 ## Recommended Next Step
 
-- feat-005: add Space Grotesk (400/500/700) via Google Fonts preconnect+link in
-  index.html (font is already referenced by `--font-family` in tokens.css).
+- feat-006: base styles in `src/index.css` (replace Vite template styles):
+  body bg `--color-bg` + text `--color-text` + font-family, h1-h3 type scale
+  from tokens, link color accent with hover-only underline, selection color.

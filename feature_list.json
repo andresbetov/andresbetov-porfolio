@@ -41,8 +41,8 @@
       "name": "Load Space Grotesk font",
       "description": "Add Space Grotesk (400/500/700) via Google Fonts in index.html; font stacks reference tokens",
       "dependencies": ["feat-004"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "index.html: preconnect to fonts.googleapis.com + fonts.gstatic.com (crossorigin) and Space Grotesk stylesheet (wght 400;500;700, display=swap); --font-family in tokens.css already references the family; verification: prettier check, eslint ., vite build pass (font links present in dist/index.html); npm test red-by-design per ADR-008; PR #4 merged to main (merge commit 071dbd9)",
       "branch": "feat/feat-005-load-space-grotesk-font"
     },
     {
@@ -50,7 +50,7 @@
       "name": "Base styles",
       "description": "Body background/text tokens, h1-h3 type scale per design system, base link styles, selection color",
       "dependencies": ["feat-005"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-006-base-styles"
     },
