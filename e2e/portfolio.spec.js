@@ -48,7 +48,7 @@ test.describe('Portfolio page', () => {
     page,
   }) => {
     const links = await page
-      .locator('a[href^="https://github.com/andresbetov"]')
+      .locator('#projects a[href^="https://github.com/andresbetov"]')
       .evaluateAll((els) => els.map((el) => el.getAttribute('href')));
     expect(links).toHaveLength(3);
   });

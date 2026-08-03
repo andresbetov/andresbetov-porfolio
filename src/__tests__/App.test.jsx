@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import App from '../App';
 
 describe('App', () => {
@@ -23,7 +23,7 @@ describe('App', () => {
 
   it('renders exactly three project cards linking to GitHub', () => {
     render(<App />);
-    const projectLinks = screen
+    const projectLinks = within(document.querySelector('#projects'))
       .getAllByRole('link')
       .filter((a) =>
         a.getAttribute('href')?.startsWith('https://github.com/andresbetov')
