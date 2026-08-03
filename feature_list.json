@@ -158,8 +158,8 @@
       "name": "Vitest smoke tests green",
       "description": "src/__tests__/App.test.jsx passes: hero, 4 nav anchors, 3 project links, social hrefs, no overflow at 320px",
       "dependencies": ["feat-017"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "evidence pass - all 5 vitest gates green since feat-013, re-verified this session (Tests 5 passed (5)): hero name+tagline, four nav anchor links, three project cards linking to GitHub (scoped to #projects per ADR-011), social links with correct hrefs, no horizontal overflow at mobile width; no code changes needed; lint+build green (init.sh)",
       "branch": "feat/feat-018-vitest-smoke-tests-green"
     },
     {
@@ -167,7 +167,7 @@
       "name": "Playwright specs green",
       "description": "e2e/portfolio.spec.js passes at 1440/768/390/320: no console errors, no overflow, anchors scroll, hover state, screenshots captured",
       "dependencies": ["feat-018"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-019-playwright-specs-green"
     },
