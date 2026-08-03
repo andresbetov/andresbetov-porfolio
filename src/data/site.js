@@ -13,4 +13,17 @@ export const site = {
     primaryCta: { label: 'View Projects', href: '#projects' },
     secondaryCta: { label: 'Contact', href: '#contact' },
   },
+  sections: [
+    { id: 'about', title: 'About' },
+    { id: 'skills', title: 'Skills' },
+    { id: 'projects', title: 'Projects' },
+    { id: 'contact', title: 'Contact' },
+  ],
+  socials: [
+    { label: 'GitHub', href: 'https://github.com/andresbetov' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andresbetov/' },
+    { label: 'X', href: 'https://x.com/andresbetov' },
+    { label: 'Instagram', href: 'https://www.instagram.com/andresbetov/' },
+  ],
+  copyright: '© 2026 Andres Bermudez',
 };
