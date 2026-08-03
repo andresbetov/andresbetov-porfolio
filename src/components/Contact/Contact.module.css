@@ -12,6 +12,9 @@
   padding: var(--space-3) var(--space-6);
   font-weight: var(--font-weight-medium);
   text-decoration: none;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .cta:hover {
