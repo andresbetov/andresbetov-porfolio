@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** feat-017 - Fix 320px overflow
+**Active Feature:** feat-018 - Vitest smoke tests green
 
 ## Status
 
@@ -26,20 +26,20 @@
 - [x] feat-014 - Contact section (heading, short message, primary CTA to LinkedIn); project links corrected to real repos (AutomatedAudit-Frontend, hybrid-fin-inference-agent-in-bvc) verified via GitHub API; removed dead site.sections + Section map (all sections now components); commit `f5f6085`, merged via PR #13 (`065be81`); vitest 5/5, e2e 10/10
 - [x] feat-015 - Responsive layout: tablet 768-1024 two-column grids (About facts, Skills cards, Projects cards) via max-width 1024px; mobile navbar now an intentional stacked layout (logo row + full-width links row, space-between, tighter gaps, no per-link wrapping, overflow 0 at 320/390 - was wrapping haphazardly before); mobile scroll-margin-top bumped to 96px for the taller nav; commit `8c4a7a7`, merged via PR #14 (`555e37d`); vitest 5/5, e2e 10/10, lint+build+prettier green; breakpoints audit-verified at 768/1024/1025/1440
 - [x] feat-016 - Hover and motion states: 150ms ease transitions for color/border on buttons (hero primary/secondary, contact CTA), nav logo+links, footer socials, project links; card hover fill `--color-surface-2` + border color on About facts, Skills cards, Projects cards (design-system Motion section + surface-2 "hover fills" token); reduced-motion already handled globally in index.css; commit `074ff06`; vitest 5/5, e2e 10/10 (hover gate green), lint+build+prettier green
+- [x] feat-017 - Fix 320px overflow: audit spec at 320/300/280 shows overflow 0 and 0 offenders (long repo-name titles wrap at their hyphen break opportunities - verified via probe spec); grids already fluid minmax(0,1fr); explicit 3/2/1 breakpoints kept, auto-fit rejected (ADR-012); hardened project card titles with overflow-wrap: break-word (data-driven content); commit `a3fdacd`; vitest 5/5, e2e 10/10, lint+build+prettier green
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-016 committed as `074ff06`, pending PR merge)
+- Nothing in progress (feat-017 committed as `a3fdacd`, pending PR merge)
 
 ### What's Next
 
-1. feat-017 - Fix 320px overflow (fluid grids with minmax/auto-fit where needed; audit says overflow is 0 at 320 today - verify and harden)
-2. feat-018 - Vitest smoke tests green (5/5 already since feat-013 - record evidence)
-3. feat-019 - Playwright specs green (10/10 already since feat-013 - record evidence)
-4. feat-020 - Meta tags and favicon
+1. feat-018 - Vitest smoke tests green (5/5 already since feat-013 - record evidence)
+2. feat-019 - Playwright specs green (10/10 already since feat-013 - record evidence)
+3. feat-020 - Meta tags and favicon
 
 ## Blockers / Risks
 
@@ -62,13 +62,15 @@
   merged via PR after gates pass (ADR-007).
 - **Red-test merge policy**: lint+build green suffices until feat-018 (ADR-008).
 - **Node 22 LTS runtime**: .nvmrc 22, ci.yml 22, engines >=22 (ADR-009).
+- **Explicit grid breakpoints over auto-fit**: minmax(0,1fr) + 3/2/1 breakpoints kept;
+  auto-fit rejected (ADR-012).
 
 ## Files Modified This Session
 
-- `src/components/{Hero,Navbar,Footer,Contact}/*.module.css` - 150ms ease transitions on interactive elements (color/background/border)
-- `src/components/{About,Skills,Projects}/*.module.css` - card hover fill surface-2 + border-color transition; Projects link transition
-- `feature_list.json` - feat-016 done (074ff06), feat-017 active
-- `progress.md`, `session-handoff.md` - session records (progress.md date corrected to 2026-08-02)
+- `src/components/Projects/Projects.module.css` - overflow-wrap: break-word on card titles (320px hardening)
+- `docs/decisions.md` - ADR-012 (keep explicit grid breakpoints over auto-fit)
+- `feature_list.json` - feat-017 done (a3fdacd), feat-018 active
+- `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
 
@@ -79,6 +81,7 @@
 - [x] Tests pass: 5 passed (5) - ALL GREEN since feat-013
 - [x] e2e regression: 10 passed (10) - ALL GREEN since feat-013; screenshots captured at 1440/390; hover gate green with transitions
 - [x] Responsive audit (temp playwright spec, feat-015): overflow 0 at 320/390/768/1024/1025/1440; nav fits at all widths; grids 1-col <=767, 2-col 768-1024, 3-col 1025+
+- [x] 320px overflow audit (temp spec, feat-017): scrollWidth-clientWidth=0 and 0 offenders at 320/300/280; probe confirmed repo-name titles wrap at hyphens
 
 ## Known Conflict (resolved at feat-013)
 
@@ -97,9 +100,8 @@
   e2e; explicit outside paths are ignored), run `npx playwright test <name>
 --reporter=line` (auto-starts dev server via webServer), delete the temp
   spec; never touch e2e/portfolio.spec.js.
-- feat-016 next: hover + motion states (transitions 150ms color/border, 200ms
-  transform; buttons/cards/links; prefers-reduced-motion already handled
-  globally in index.css).
+- feat-018 next: vitest 5/5 already green since feat-013 - evidence-recording pass only.
+  After it: feat-019 (e2e evidence pass), feat-020 (meta tags + favicon).
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
 - Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
   hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.
