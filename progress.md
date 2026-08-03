@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-007 - Focus rings and reduced motion
+**Active Feature:** feat-008 - Navbar with anchor links
 
 ## Status
 
@@ -16,6 +16,7 @@
 - [x] feat-004 - tokens.css with every design-system token under :root; commit `f7c8644`, merged via PR #3 (`6007566`)
 - [x] feat-005 - Space Grotesk font (400/500/700) loaded in index.html; commit `d752593`, merged via PR #4 (`071dbd9`)
 - [x] feat-006 - Base styles (body, h1-h3, links, selection) from tokens; commit `ad06d2e`, merged via PR #5 (`d5fa615`)
+- [x] feat-007 - Focus rings (focus-visible 2px accent) + reduced motion; commit `0dbd17a`, merged via PR #6 (`63385c5`)
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -26,9 +27,9 @@
 
 ### What's Next
 
-1. feat-007 - Focus rings (2px accent, offset 2px) and reduced motion
-2. feat-008 - Navbar with anchor links
-3. feat-009 - Hero section
+1. feat-008 - Navbar with anchor links (first UI section: run test:e2e as regression check from here)
+2. feat-009 - Hero section
+3. feat-010 - Section shells and footer
 
 ## Blockers / Risks
 
@@ -54,8 +55,8 @@
 
 ## Files Modified This Session
 
-- `src/index.css` - feat-006 base styles (replaced template styles, imports tokens.css)
-- `feature_list.json` - feat-006 done, feat-007 active
+- `src/index.css` - feat-007 focus rings + reduced motion
+- `feature_list.json` - feat-007 done, feat-008 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -72,6 +73,6 @@
   session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
   design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-006 (base styles) on main. Next: feat-007 focus rings + reduced motion
-  in index.css; add focus-visible outline 2px var(--color-accent) offset 2px and
-  prefers-reduced-motion to disable transitions.
+- feat-007 on main. Next: feat-008 navbar (first real UI section — run
+  `npm run test:e2e` before merge as a regression check, per session decision;
+  e2e becomes a formal gate at feat-019).

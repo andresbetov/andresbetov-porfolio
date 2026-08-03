@@ -59,8 +59,8 @@
       "name": "Focus rings and reduced motion",
       "description": "Global 2px accent focus ring on all interactive elements; prefers-reduced-motion disables transitions",
       "dependencies": ["feat-006"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "src/index.css: :focus-visible outline 2px solid var(--color-accent) offset 2px on a/button/input/select/textarea/[tabindex]; @media (prefers-reduced-motion: reduce) disables animation/transition duration and scroll-behavior; commit 0dbd17a; verification: prettier, eslint ., vite build pass (both rules in dist CSS); npm test red-by-design per ADR-008; PR #6 merged to main (merge commit 63385c5)",
       "branch": "feat/feat-007-focus-rings-and-reduced-motion"
     },
     {
@@ -68,7 +68,7 @@
       "name": "Navbar with anchor links",
       "description": "Fixed top navbar: logo 'andresbetov', links About/Skills/Projects/Contact (#about #skills #projects #contact), accent hover",
       "dependencies": ["feat-007"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-008-navbar-with-anchor-links"
     },
