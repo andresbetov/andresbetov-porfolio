@@ -149,8 +149,8 @@
       "name": "Fix 320px overflow",
       "description": "Verify no horizontal overflow at 320px (long words, fixed widths, padding); make grids fluid with minmax/auto-fit",
       "dependencies": ["feat-016"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit a3fdacd on feat/feat-017-fix-320px-overflow; audit spec at 320/300/280: scrollWidth-clientWidth=0 and 0 offenders at all widths (long repo-name titles wrap at their hyphen break opportunities - verified via probe); grids already fluid minmax(0,1fr) with 3/2/1 explicit breakpoints kept per ADR-012 (auto-fit rejected: would change verified tablet column count); hardened project card titles with overflow-wrap: break-word (titles are data-driven from site.js); vitest 5/5, e2e 10/10, lint+build+prettier green",
       "branch": "feat/feat-017-fix-320px-overflow"
     },
     {
@@ -158,7 +158,7 @@
       "name": "Vitest smoke tests green",
       "description": "src/__tests__/App.test.jsx passes: hero, 4 nav anchors, 3 project links, social hrefs, no overflow at 320px",
       "dependencies": ["feat-017"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-018-vitest-smoke-tests-green"
     },
