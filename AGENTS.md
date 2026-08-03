@@ -56,9 +56,11 @@ Every new session, in order:
   es5, 2-space indent per .editorconfig)
 - `npm run preview` — preview production build
 
-CI (`.github/workflows/ci.yml`, Node 20 per `.nvmrc`) runs `npm ci`, lint,
+CI (`.github/workflows/ci.yml`, Node 22 per `.nvmrc`) runs `npm ci`, lint,
 test, build on push/PR. No e2e or format checks in CI yet — an e2e job lands
-with feat-022 and a Pages deploy with feat-023.
+with feat-022 and a Pages deploy with feat-023. Note: Node was pinned at 20 in
+the original harness, but jsdom 30 requires Node ^22.22.2 || ^24.15 || >=26,
+so the runtime is Node 22 LTS.
 
 ## Definition of done
 
