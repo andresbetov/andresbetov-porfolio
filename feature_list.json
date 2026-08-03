@@ -77,8 +77,8 @@
       "name": "Hero section",
       "description": "H1 'Andres Bermudez', tagline mentioning software engineer + space exploration, primary CTA 'View Projects' (#projects) and secondary 'Contact' (#contact)",
       "dependencies": ["feat-008"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "src/components/Hero/Hero.jsx + module.css: H1 name, tagline (software engineer + space exploration, from site.js hero), primary CTA (accent bg, radius 2px, accent-hover) + secondary (surface bg, accent border, radius 8px); App renders Navbar + main > Hero; commit 71ca136; verification: prettier, eslint, vite build pass; vitest 3 passed / 2 failed (hero gate green; projects/socials by design); e2e 8 passed / 2 failed (sections/projects by design), no console errors/overflow; PR #8 merged to main (merge commit 8aeae16)",
       "branch": "feat/feat-009-hero-section"
     },
     {
@@ -86,7 +86,7 @@
       "name": "Section shells and footer",
       "description": "Section components with 96px (64px mobile) padding and H2 headings; footer with social links (GitHub, LinkedIn, X, Instagram) with correct hrefs",
       "dependencies": ["feat-009"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-010-section-shells-and-footer"
     },

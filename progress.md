@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-009 - Hero section
+**Active Feature:** feat-010 - Section shells and footer
 
 ## Status
 
@@ -18,6 +18,7 @@
 - [x] feat-006 - Base styles (body, h1-h3, links, selection) from tokens; commit `ad06d2e`, merged via PR #5 (`d5fa615`)
 - [x] feat-007 - Focus rings (focus-visible 2px accent) + reduced motion; commit `0dbd17a`, merged via PR #6 (`63385c5`)
 - [x] feat-008 - Navbar (fixed, logo, 4 anchor links, accent hover) + src/data/site.js; commit `43717e2`, merged via PR #7 (`3bad026`); nav + 320px overflow vitest gates now green
+- [x] feat-009 - Hero (H1, tagline, primary/secondary CTAs); commit `71ca136`, merged via PR #8 (`8aeae16`); hero vitest gate + e2e button-hover gate now green
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -28,9 +29,9 @@
 
 ### What's Next
 
-1. feat-009 - Hero section (H1, tagline, CTAs)
-2. feat-010 - Section shells and footer
-3. feat-011 - About section
+1. feat-010 - Section shells and footer (social links gate)
+2. feat-011 - About section
+3. feat-012 - Skills section
 
 ## Blockers / Risks
 
@@ -56,11 +57,10 @@
 
 ## Files Modified This Session
 
-- `src/components/Navbar/` - feat-008 navbar (jsx + module.css)
-- `src/data/site.js` - content source (logo, nav links)
-- `src/App.jsx` - renders Navbar (template removed)
-- `tests/setup.js` - afterEach(cleanup) test isolation fix
-- `feature_list.json` - feat-008 done, feat-009 active
+- `src/components/Hero/` - feat-009 hero (jsx + module.css)
+- `src/data/site.js` - hero content
+- `src/App.jsx` - renders Navbar + main > Hero
+- `feature_list.json` - feat-009 done, feat-010 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -69,8 +69,8 @@
 - [x] Lint clean: `npm run lint` (eslint .) passes
 - [x] Build passes: `vite build`, dist/ generated
 - [x] Prettier clean: `npx prettier --check` on changed files
-- [ ] Tests pass: 2 passed / 3 failed [hero, projects, socials gates - green at their features; red by design until then]
-- [x] e2e regression (from feat-008): 7 passed / 3 failed (sections/hero button by design); no console errors, no overflow
+- [ ] Tests pass: 3 passed / 2 failed [projects, socials gates - green at their features; red by design until then]
+- [x] e2e regression (from feat-008): 8 passed / 2 failed (sections/projects by design); no console errors, no overflow
 
 ## Notes for Next Session
 
@@ -78,5 +78,5 @@
   session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
   design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-008 on main; navbar + data/site.js live. Next: feat-009 hero section.
-- tests/setup.js now cleans up after each test (RTL auto-cleanup needed globals).
+- feat-009 on main. Next: feat-010 section shells + footer (social links gate).
+- tests/setup.js cleans up after each test (RTL auto-cleanup needed globals).
