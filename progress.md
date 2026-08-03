@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-011 - About section
+**Active Feature:** feat-012 - Skills section
 
 ## Status
 
@@ -20,6 +20,7 @@
 - [x] feat-008 - Navbar (fixed, logo, 4 anchor links, accent hover) + src/data/site.js; commit `43717e2`, merged via PR #7 (`3bad026`); nav + 320px overflow vitest gates now green
 - [x] feat-009 - Hero (H1, tagline, primary/secondary CTAs); commit `71ca136`, merged via PR #8 (`8aeae16`); hero vitest gate + e2e button-hover gate now green
 - [x] feat-010 - Section shells + footer with social links; commit `895f18b`, merged via PR #9 (`7900b4c`); socials vitest gate + e2e sections/anchors gate now green
+- [x] feat-011 - About section (bio lead/summary + 3 fact cards, Card spec, 3-col -> 1-col grid); commit `45a7544`, PR #10 open; Sections wrapped in 1120px centered container (conformance); vitest 4/1, e2e 9/1 stable
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -30,9 +31,9 @@
 
 ### What's Next
 
-1. feat-011 - About section (bio content)
-2. feat-012 - Skills section (card grid)
-3. feat-013 - Projects section (3 cards + GitHub links)
+1. feat-012 - Skills section (card grid)
+2. feat-013 - Projects section (3 cards + GitHub links)
+3. feat-014 - Contact section
 
 ## Blockers / Risks
 
@@ -58,11 +59,11 @@
 
 ## Files Modified This Session
 
-- `src/components/Section/` - feat-010 section shell (jsx + module.css)
-- `src/components/Footer/` - feat-010 footer (jsx + module.css)
-- `src/data/site.js` - sections, socials, copyright
-- `src/App.jsx` - renders section shells + footer
-- `feature_list.json` - feat-010 done, feat-011 active
+- `src/components/About/` - feat-011 about section (jsx + module.css, new)
+- `src/data/site.js` - added site.about (title, lead, summary, facts)
+- `src/components/Section/` - inner 1120px centered container
+- `src/App.jsx` - renders <About />, filters about from shell map
+- `feature_list.json` - feat-011 done (45a7544), feat-012 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -71,7 +72,7 @@
 - [x] Lint clean: `npm run lint` (eslint .) passes
 - [x] Build passes: `vite build`, dist/ generated
 - [x] Prettier clean: `npx prettier --check` on changed files
-- [ ] Tests pass: 4 passed / 1 failed [projects gate - green at feat-013; red by design until then]
+- [x] Tests pass: 4 passed / 1 failed [projects gate - green at feat-013; red by design until then]
 - [x] e2e regression (from feat-008): 9 passed / 1 failed (projects by design); no console errors, no overflow
 
 ## Known Conflict (deferred to feat-013)
@@ -87,6 +88,8 @@
   session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
   design until feat-018; run npm run build separately).
 - Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-010 on main; section shells + footer live. Next: feat-011 about content.
+- feat-011 on feat/feat-011-about-section (PR #10, not yet merged); next: feat-012 skills.
+- Copy caution: About content must avoid "software engineer" phrase (hero vitest gate).
+- ui-designer/qa-visual-tester subagents down (DB error) - code-level audits only.
 - tests/setup.js cleans up after each test (RTL auto-cleanup needed globals).
 - feat-013 count conflict: see 'Known Conflict' above.

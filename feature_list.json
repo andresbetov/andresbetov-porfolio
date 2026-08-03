@@ -95,8 +95,8 @@
       "name": "About section",
       "description": "Bio: systems engineering student + fullstack developer from Colombia, space-exploration interest, brief professional summary",
       "dependencies": ["feat-010"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 45a7544 on feat/feat-011-about-section; vitest 4/1 (projects by design), e2e 9/1, lint+build green; code-level design audit (ui-designer subagent down)",
       "branch": "feat/feat-011-about-section"
     },
     {
@@ -104,7 +104,7 @@
       "name": "Skills section",
       "description": "Card grid: Backend (Java, Spring Boot, microservices), Frontend (React, JavaScript), Data/Quant (Python, portfolio analytics); cards per component spec",
       "dependencies": ["feat-011"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-012-skills-section"
     },
