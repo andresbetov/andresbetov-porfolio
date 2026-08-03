@@ -3,25 +3,23 @@
 ## Current Objective
 
 - Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001..011 on main. Next: feat-012 (skills section).
-- Branch / commit: feat/feat-011-about-section @ `45a7544` (PR #10 open, not yet merged)
+- Current status: feat-001..012 on main. Next: feat-013 (projects section, resolves
+  the GitHub-count conflict).
+- Branch / commit: feat/feat-012-skills-section @ `4842539` (PR #11 open, not yet merged)
 
 ## Completed This Session
 
-- [x] feat-011 - About section: `site.about` content (title, lead, summary, 3
-      facts) in src/data/site.js + `src/components/About/` (About.jsx +
-      About.module.css): lead + summary paragraphs (38rem measure) and three
-      fact cards (Card spec: surface bg, radius 8px, padding 24px, subtle
-      border), grid 3 cols -> 1 col below 768px. App.jsx renders <About /> and
-      filters it out of the Section shell map. Commit `45a7544`.
-- [x] Section shell conformance fix: inner div with max-width 1120px centered
-      (--content-max-width) inside every Section (was full-bleed).
+- [x] feat-012 - Skills section: `site.skills` (title + 3 cards: Backend/Java/Spring
+      Boot/Microservices, Frontend/React/JavaScript, Data-Quant/Python/portfolio
+      analytics) + `src/components/Skills/` (Skills.jsx + Skills.module.css): card
+      grid per Card spec, h3 titles, muted item list with 6px accent square markers
+      (accent as non-text element, AA-safe), 3-col -> 1-col below 768px. App.jsx
+      renders <Skills /> and filters skills from the Section shell map.
+      Commit `4842539`.
 - [x] Vitest: 4 passed / 1 failed (projects gate red by design)
-- [x] e2e regression: 9 passed / 1 failed (projects by design); screenshots
-      captured at 1440/390
-- [x] ui-designer subagent retried -> still DOWN (DB error spawning sessions);
-      design audit done at code level (tokens-only, card spec, hierarchy,
-      responsive, no accent small text) - PASS
+- [x] e2e regression: 9 passed / 1 failed (projects by design); no overflow, no
+      console errors; screenshots captured at 1440/390
+- [x] lint + build + prettier green
 
 ## Skills Usage Notes (for future sessions)
 
@@ -43,36 +41,35 @@
 | Format | npx prettier --check | PASS | all changed files |
 | Test | npm test | 4 passed / 1 failed | projects gate red by design |
 | e2e | npm run test:e2e | 9 passed / 1 failed | projects by design |
-| CI | PR #10 checks | pending | merge per ADR-008 (lint+build green, test red by-design) |
+| CI | PR #11 checks | pending | merge per ADR-008 (lint+build green locally; CI test step red by design) |
 
 ## Files Changed
 
-- `src/data/site.js` (added `site.about`)
-- `src/components/About/About.jsx`, `About.module.css` (new, feat-011)
-- `src/components/Section/Section.jsx`, `Section.module.css` (1120px centered
-  inner container)
-- `src/App.jsx` (renders <About />, filters about out of shell map)
+- `src/data/site.js` (added `site.skills`)
+- `src/components/Skills/Skills.jsx`, `Skills.module.css` (new, feat-012)
+- `src/App.jsx` (renders <Skills />, filters skills out of shell map)
 - `feature_list.json`, `progress.md`, `session-handoff.md`
 
 ## Decisions Made
 
-- About copy must not contain the phrase "software engineer" anywhere
-  (case-insensitive): the hero vitest gate queries
-  `getByText(/software engineer/i, {selector: 'p, span, h2'})` and would match
-  2 elements. Fact card says "Full-stack developer" instead; summary avoids the
-  phrase. Same risk applies to future sections - check for text collisions
-  with hero gate phrases (name, "software engineer", "space exploration").
-- Sections now constrain content to 1120px centered (design-system conformance).
-- Fact cards use ul/li semantics; accent color not used on small text (WCAG AA
-  rule from design-system).
+- Skills use h3 card titles + muted item list with accent square markers (6px,
+  non-text element so accent use is AA-safe).
+- Feat-011 lesson (still applies): copy must avoid the hero-gate phrase
+  "software engineer" (case-insensitive) in any p/span/h2.
 
-## Known Conflict (deferred to feat-013)
+## Known Conflict (to resolve AT feat-013 - NEXT FEATURE)
 
 - Footer GitHub link (https://github.com/andresbetov) matches the prefix filter
   of the projects gates (vitest startsWith + e2e a[href^=...]). Adding 3 project
   cards will make 4 matching links -> "exactly 3" gates fail. Resolution needed
-  at feat-013. Candidate: fix the gates' scope to the projects section or move
-  footer GitHub link.
+  NOW. Candidates:
+  a) Scope the gates to the projects section (change the test selectors - tests
+     are acceptance gates; scoping them to the projects section is a faithful
+     reading of "exactly three project cards").
+  b) Keep tests as-is and make one project link the profile URL (no - weakens
+     intent).
+  Decision: prefer (a) - the gates' intent is "exactly three project cards", so
+  scope to the projects section; document in the PR.
 
 ## Blockers / Risks
 
@@ -87,12 +84,13 @@
 3. Review this handoff.
 4. Run `./init.sh` (test step aborts it by design until feat-018; then run
    `npm run build` separately).
-5. Merge PR #10 if CI green (lint+build), then branch from main:
-   `git checkout -b feat/feat-012-skills-section`.
+5. Merge PR #11 if CI green (lint+build), then branch from main:
+   `git checkout -b feat/feat-013-projects-section`.
 
 ## Recommended Next Step
 
-- feat-012: Skills card grid from src/data/site.js (Backend: Java, Spring Boot,
-  microservices; Frontend: React, JavaScript; Data/Quant: Python, portfolio
-  analytics) using the Card spec; pattern mirrors About facts grid. Keep
-  vitest 4/1, e2e 9/1, prettier/eslint/build green; record screenshots.
+- feat-013: Projects section - 3 cards (Elara App, hierarchical-clustering-
+  portfolio-selector, xai-financial-predictor-engine) with one-line descriptions
+  and GitHub links from src/data/site.js, Card spec, plus the count-conflict
+  resolution (scope gates to projects section). This feature flips the vitest
+  + e2e projects gates to green: after merge, npm test = 5/5 and e2e = 10/10.

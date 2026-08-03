@@ -104,8 +104,8 @@
       "name": "Skills section",
       "description": "Card grid: Backend (Java, Spring Boot, microservices), Frontend (React, JavaScript), Data/Quant (Python, portfolio analytics); cards per component spec",
       "dependencies": ["feat-011"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 4842539 on feat/feat-012-skills-section; vitest 4/1, e2e 9/1, lint+build green",
       "branch": "feat/feat-012-skills-section"
     },
     {
@@ -113,7 +113,7 @@
       "name": "Projects section",
       "description": "3 hardcoded cards with titles, one-line descriptions, and GitHub links: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine",
       "dependencies": ["feat-012"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-013-projects-section"
     },

@@ -24,6 +24,23 @@ export const site = {
       { label: 'Based in', value: 'Colombia' },
     ],
   },
+  skills: {
+    title: 'Skills',
+    cards: [
+      {
+        title: 'Backend',
+        items: ['Java', 'Spring Boot', 'Microservices'],
+      },
+      {
+        title: 'Frontend',
+        items: ['React', 'JavaScript'],
+      },
+      {
+        title: 'Data/Quant',
+        items: ['Python', 'Portfolio analytics'],
+      },
+    ],
+  },
   sections: [
     { id: 'about', title: 'About' },
     { id: 'skills', title: 'Skills' },
