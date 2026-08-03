@@ -185,8 +185,8 @@
       "name": "README and final audit",
       "description": "Minimal README (project, stack, commands, links); run ui-designer audit and qa-visual-tester, fix any P0/P1 findings",
       "dependencies": ["feat-020"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 4d68038 on feat/feat-021-readme-and-final-audit; README already existed pre-scaffold - polished: removed emoji, added npm run preview row (README socials without www. per AGENTS.md convention, verified Apache-2.0 LICENSE file exists); final audit (ui-designer/qa-visual-tester subagents unavailable - DB error, per user instruction) replaced by code-level + scripted: zero hardcoded colors/fonts outside tokens.css, all 35 used custom properties defined (6 unused are design-system reserves), interactive audit temp spec: all 15 a/button visible+focusable+transitioned+anchored, full e2e 10/10 + overflow at 4 widths; vitest 5/5, lint+build green; no P0/P1 findings",
       "branch": "feat/feat-021-readme-and-final-audit"
     },
     {
@@ -194,7 +194,7 @@
       "name": "CI e2e job",
       "description": "Add Playwright e2e job to .github/workflows/ci.yml: install chromium, run npm run test:e2e, upload screenshots (portfolio-desktop/mobile.png) and playwright-report as artifacts",
       "dependencies": ["feat-019"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-022-ci-e2e-job"
     },

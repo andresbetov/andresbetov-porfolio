@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** feat-021 - README and final audit
+**Active Feature:** feat-022 - CI e2e job
 
 ## Status
 
@@ -30,19 +30,19 @@
 - [x] feat-018 - Vitest smoke tests green: evidence pass - 5/5 gates green since feat-013, re-verified (hero name+tagline, four nav anchors, three #projects GitHub cards, social hrefs, no 320px overflow); no code changes; merged via PR #17 (`ea26b6c`); ADR-008 red-test merge policy ended
 - [x] feat-019 - Playwright specs green: evidence pass - 10/10 gates green since feat-013, re-verified (no overflow at 1440/768/390/320, no console/page errors, sections + anchor scroll, three project cards to right repos, primary button hover state, desktop/mobile screenshots to /tmp/opencode); no code changes; merged via PR #18 (`af515b0`)
 - [x] feat-020 - Meta tags and favicon: title "Andres Bermudez - Software Engineer", meta description (persona + projects), OG tags (type website, title, description, url = expected Pages URL), theme-color #13161c (--color-bg); favicon.svg replaced Vite template with SVG 'AB' monogram in accent green #0ae98a on bg rounded tile (Space Grotesk 700); commit `76cde93`, merged via PR #19 (`c4f1151`); head audit temp spec verified all tags + favicon 200 + mark content; vitest 5/5, e2e 10/10, lint+build green
+- [x] feat-021 - README and final audit: README pre-existing, polished (emoji removed, preview command added, socials without www. per convention, Apache-2.0 LICENSE verified); final audit done code-level + scripted (subagents unavailable): zero hardcoded colors/fonts outside tokens.css, 35/35 used tokens defined (6 unused are reserves), 15/15 interactive elements visible+focusable+transitioned+anchored, e2e 10/10; no P0/P1 findings; commit `4d68038`, pending PR merge
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-020 committed as `76cde93`, pending PR merge)
+- Nothing in progress (feat-021 committed as `4d68038`, pending PR merge)
 
 ### What's Next
 
-1. feat-021 - README and final audit (minimal README; ui-designer + qa-visual-tester audits blocked by subagent infra - fall back to code-level + scripted audit)
-2. feat-022 - CI e2e job (depends on feat-019, available now)
-3. feat-023 - GitHub Pages deploy
+1. feat-022 - CI e2e job (install chromium, run test:e2e, upload screenshots + report as artifacts)
+2. feat-023 - GitHub Pages deploy
 
 ## Blockers / Risks
 
@@ -70,9 +70,8 @@
 
 ## Files Modified This Session
 
-- `index.html` - title, description, OG tags, theme-color, favicon link
-- `public/favicon.svg` - replaced Vite template mark with 'AB' monogram (accent green on bg tile)
-- `feature_list.json` - feat-020 done (76cde93), feat-021 active
+- `README.md` - emoji removed, preview command added
+- `feature_list.json` - feat-021 done (4d68038), feat-022 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -103,10 +102,10 @@
   e2e; explicit outside paths are ignored), run `npx playwright test <name>
 --reporter=line` (auto-starts dev server via webServer), delete the temp
   spec; never touch e2e/portfolio.spec.js.
-- feat-021 next: README + final audit. Subagent infra down (DB error) - try
-  ui-designer once per AGENTS.md, fall back to code-level audit. README should
-  list social links WITHOUT www. (per AGENTS.md note: tests assert www. on
-  LinkedIn/Instagram hrefs but README lists them without).
+- feat-022 next: CI e2e job - add e2e job to .github/workflows/ci.yml: install
+  chromium, run npm run test:e2e, upload /tmp/opencode screenshots (rename to
+  portfolio-desktop/mobile.png per feature spec) and playwright-report as
+  artifacts. Check playwright config output dir - reportDir may need setting.
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
 - Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
   hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.
