@@ -13,5 +13,6 @@ export default defineConfig({
     reuseExistingServer: true,
     timeout: 60000,
   },
+  reporter: [['list'], ['html', { open: 'never' }]],
   projects: [{ name: 'chromium', use: { browserName: 'chromium' } }],
 });
