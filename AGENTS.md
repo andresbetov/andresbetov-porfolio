@@ -7,7 +7,7 @@ theme. Single-page marketing site: hero, about, skills, projects, contact.
 
 Every new session, in order:
 
-1. Read `feature_list.json` and `progress.md`.
+1. Read `feature_list.json`, `progress.md`, and `docs/decisions.md`.
 2. Read `session-handoff.md` if present.
 3. Run `./init.sh` (or the verification commands it runs) before editing.
 4. Work on ONE feature at a time. Do not start a feature whose dependencies
@@ -17,7 +17,10 @@ Every new session, in order:
 
 - Visual tokens are defined once in `docs/design-system.md`; implement them
   in `src/styles/tokens.css` and never hardcode colors/fonts elsewhere.
-- Keep components in `src/components/`, one per file.
+- Components live in `src/components/`, one folder per component containing
+  `component.jsx` + `component.module.css` (CSS Modules).
+- All content (profile, skills, projects, links) comes from `src/data/site.js`;
+  never embed content directly in components.
 - No comments in code unless requested; no emojis in UI copy.
 - Never introduce secrets or API keys.
 - Content is English. Person: software engineer, systems engineering student,
@@ -32,6 +35,7 @@ Every new session, in order:
 - `npm test` — Vitest smoke tests (must pass before done)
 - `npm run test:e2e` — Playwright specs (desktop + mobile; run before done
   for visual/UX features)
+- `npm run format` — Prettier formatting
 - `npm run preview` — preview production build
 
 ## Definition of done
