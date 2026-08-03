@@ -13,6 +13,17 @@ export const site = {
     primaryCta: { label: 'View Projects', href: '#projects' },
     secondaryCta: { label: 'Contact', href: '#contact' },
   },
+  about: {
+    title: 'About',
+    lead: 'I build software that turns data into decisions, from portfolio analytics and financial prediction engines to tools for space exploration.',
+    summary:
+      'As a systems engineering student from Colombia, I work across the stack: backend services in Java and Spring Boot, interfaces in React, and quantitative tooling in Python.',
+    facts: [
+      { label: 'Role', value: 'Full-stack developer' },
+      { label: 'Education', value: 'Systems engineering student' },
+      { label: 'Based in', value: 'Colombia' },
+    ],
+  },
   sections: [
     { id: 'about', title: 'About' },
     { id: 'skills', title: 'Skills' },

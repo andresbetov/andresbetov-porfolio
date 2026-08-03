@@ -3,6 +3,11 @@
   scroll-margin-top: var(--space-8);
 }
 
+.inner {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
 .heading {
   margin: 0 0 var(--space-6);
 }
