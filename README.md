@@ -13,14 +13,14 @@ systems engineering student and fullstack developer in Colombia — someday on M
 
 ## Commands
 
-| Command | Description |
-|---|---|
-| `npm run dev` | Start the dev server |
-| `npm run build` | Production build |
-| `npm run lint` | Lint |
-| `npm test` | Vitest smoke tests |
+| Command            | Description                 |
+| ------------------ | --------------------------- |
+| `npm run dev`      | Start the dev server        |
+| `npm run build`    | Production build            |
+| `npm run lint`     | Lint                        |
+| `npm test`         | Vitest smoke tests          |
 | `npm run test:e2e` | Playwright specs (chromium) |
-| `npm run format` | Prettier formatting |
+| `npm run format`   | Prettier formatting         |
 
 ## Project structure
 

@@ -42,15 +42,13 @@ Every new session, in order:
 
 ## Commands
 
-The npm scripts below only exist after feat-001/feat-003 (no root
-`package.json` yet). Verification sequence: install, lint, test, build.
-
 - `npm run dev` — dev server (default http://localhost:5173)
 - `npm run build` — production build (must pass before done)
-- `npm run lint` — ESLint (must pass before done; no ESLint config is
-  committed yet, so this gate only becomes runnable with the scaffold)
+- `npm run lint` — ESLint (`eslint .`, flat config `eslint.config.js`; must
+  pass before done; `.opencode/` is ignored)
 - `npm test` — Vitest smoke tests (jsdom; config picks up only
-  `src/**/*.test.{js,jsx}`, setup in `tests/setup.js`)
+  `src/**/*.test.{js,jsx}`, setup in `tests/setup.js`; red by design until
+  feat-018 — do not weaken the tests to make it pass)
 - `npm run test:e2e` — Playwright, chromium only; auto-starts the dev server
   on 5173; checks overflow at 1440/768/390/320, anchors, hover; screenshots
   at 1440/390 into `/tmp/opencode/portfolio-{desktop,mobile}.png`

@@ -12,24 +12,25 @@
 
 - [x] feat-002 - Initialize git repository: git init (main), .gitignore, initial commit `68206bc`
 - [x] feat-001 - Scaffold Vite + React app: create-vite react template (Vite 8.2.0, React 19.2.8) in repo root on branch `feat/feat-001-scaffold-vite-react-app`, dev server serves default page, lint+build pass; commit `8ba49cf`
+- [x] feat-003 - Install dependencies: vitest, RTL, jest-dom, jsdom, @playwright/test, prettier, eslint stack; scripts test/test:e2e/format/lint; engines >=20; chromium installed; ESLint chosen over template's oxlint; commit `7be1cbb`
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress
+- Nothing in progress (feat-001/003 in open stacked PRs awaiting merge after CI)
 
 ### What's Next
 
-1. feat-003 - Install dependencies (vitest, RTL, playwright, prettier) + scripts
+1. Merge PR chain to main (PR #1 feat-001 -> PR #2 feat-003) once CI settles
 2. feat-004 - Create tokens.css from docs/design-system.md
 3. feat-005 - Load Space Grotesk font
 
 ## Blockers / Risks
 
 - [ ] Risk: verification suites are red until the app exists — expected; they are
-  the acceptance gates for each feature. Mitigation: implement features in
-  dependency order.
+      the acceptance gates for each feature. Mitigation: implement features in
+      dependency order.
 
 ## Decisions Made
 
@@ -57,13 +58,14 @@
 ## Evidence of Completion
 
 - [x] Dev server serves default page: HTTP 200 at http://localhost:5173 (Vite 8.2.0)
-- [x] Lint clean: oxlint (template default) passes via init.sh
-- [x] Build passes: `vite build` 123ms, dist/ generated
-- [ ] Tests pass: [pending - vitest arrives with feat-003]
+- [x] Lint clean: `npm run lint` (eslint .) passes
+- [x] Build passes: `vite build`, dist/ generated
+- [ ] Tests pass: [pending - App gates go green at feat-018; npm test currently 4 failed / 1 passed, red by design]
 
 ## Notes for Next Session
 
-- Start with feat-003: deps + scripts. Current create-vite template ships
-  **oxlint** (`.oxlintrc.json`, `lint: oxlint`) instead of the ESLint plan in
-  feature_list/AGENTS.md — decide at feat-003: keep oxlint or swap to
-  eslint + eslint.config.js (and drop .oxlintrc.json).
+- feat-001 (8ba49cf) and feat-003 (7be1cbb) are in stacked PRs:
+  PR #1 (base main) <- PR #2 (base feat-001 branch). Merge order: #2 then #1.
+- Lint decision resolved: ESLint (eslint . + eslint.config.js flat config,
+  prettier-compatible); oxlint/.oxlintrc.json removed.
+- Next feature: feat-004 tokens.css from docs/design-system.md.
