@@ -3,6 +3,8 @@
 Fast, minimalist, professional portfolio site for **Andres Bermudez** (`andresbetov`),
 systems engineering student and fullstack developer in Colombia.
 
+**Live:** <https://andresbetov.github.io/andresbetov-porfolio/>
+
 ## Stack
 
 - React + Vite
