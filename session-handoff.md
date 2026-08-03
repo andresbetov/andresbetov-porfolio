@@ -16,6 +16,22 @@
 - [x] Vitest: 4 passed / 1 failed (socials gate green; projects by design)
 - [x] e2e regression: 9 passed / 1 failed (sections+anchors gate green;
       projects by design); no console errors/overflow
+- [x] Harness audit (harness-creator skill, validate-harness.mjs): 100/100,
+      no bottleneck
+- [x] UI audit (frontend-design skill applied; ui-designer subagent DOWN -
+      DB error spawning tasks; done at code level): no hardcoded colors outside
+      tokens.css; buttons/sections/type/focus/reduced-motion conform; fixed
+      nav/footer hover underline per Link spec (commit `ad0205a`)
+
+## Skills Usage Notes (for future sessions)
+
+- Load frontend-design, webapp-testing, harness-creator skills (AGENTS.md
+  workflow does not yet mention skills; skills live in .opencode/skills/).
+- ui-designer / qa-visual-tester subagents were failing to spawn (DB error);
+  audit manually at code level when they are down.
+- webapp-testing skill (python scripts/with_server.py) is an alternative to
+  npm run test:e2e for ad-hoc inspection, not a replacement for the pinned
+  Playwright gates.
 
 ## Verification Evidence
 
