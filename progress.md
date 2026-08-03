@@ -15,7 +15,7 @@
 - [x] feat-003 - Install dependencies + scripts; ESLint over oxlint; Node 22 runtime (ADR-009); commits `1c164e1`, `10a0c9e`, merged via PR #2 (`960b6af`)
 - [x] feat-004 - tokens.css with every design-system token under :root; commit `f7c8644`, merged via PR #3 (`6007566`)
 - [x] feat-005 - Space Grotesk font (400/500/700) loaded in index.html; commit `d752593`, merged via PR #4 (`071dbd9`)
-- [x] feat-006 - Base styles (body, h1-h3, links, selection) from tokens; PR #5 (`d5fa615`)
+- [x] feat-006 - Base styles (body, h1-h3, links, selection) from tokens; commit `ad06d2e`, merged via PR #5 (`d5fa615`)
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)

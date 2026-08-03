@@ -42,7 +42,7 @@
       "description": "Add Space Grotesk (400/500/700) via Google Fonts in index.html; font stacks reference tokens",
       "dependencies": ["feat-004"],
       "status": "done",
-      "evidence": "index.html: preconnect to fonts.googleapis.com + fonts.gstatic.com (crossorigin) and Space Grotesk stylesheet (wght 400;500;700, display=swap); --font-family in tokens.css already references the family; verification: prettier check, eslint ., vite build pass (font links present in dist/index.html); npm test red-by-design per ADR-008; PR #4 merged to main (merge commit 071dbd9)",
+      "evidence": "index.html: preconnect to fonts.googleapis.com + fonts.gstatic.com (crossorigin) and Space Grotesk stylesheet (wght 400;500;700, display=swap); --font-family in tokens.css already references the family; commit d752593; verification: prettier check, eslint ., vite build pass (font links present in dist/index.html); npm test red-by-design per ADR-008; PR #4 merged to main (merge commit 071dbd9)",
       "branch": "feat/feat-005-load-space-grotesk-font"
     },
     {
@@ -51,7 +51,7 @@
       "description": "Body background/text tokens, h1-h3 type scale per design system, base link styles, selection color",
       "dependencies": ["feat-005"],
       "status": "done",
-      "evidence": "src/index.css replaced template styles: @import tokens.css; body bg/color/font from tokens (color-scheme dark, antialiasing); h1-h3 weight 700 with token sizes/line-heights; links accent with hover-only underline; ::selection accent bg + dark text; verification: prettier, eslint ., vite build pass (accent 0ae98a, bg 13161c, Space Grotesk present in dist CSS); npm test red-by-design per ADR-008; PR #5 merged to main (merge commit d5fa615)",
+      "evidence": "src/index.css replaced template styles: @import tokens.css; body bg/color/font from tokens (color-scheme dark, antialiasing); h1-h3 weight 700 with token sizes/line-heights; links accent with hover-only underline; ::selection accent bg + dark text; commit ad06d2e; verification: prettier, eslint ., vite build pass (accent 0ae98a, bg 13161c, Space Grotesk present in dist CSS); npm test red-by-design per ADR-008; PR #5 merged to main (merge commit d5fa615)",
       "branch": "feat/feat-006-base-styles"
     },
     {

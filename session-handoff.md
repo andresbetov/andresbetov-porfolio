@@ -8,11 +8,12 @@
 
 ## Completed This Session
 
-- [x] feat-005 - Space Grotesk (400/500/700) Google Fonts links in index.html;
-      PR #4 MERGED (`071dbd9`)
+- [x] feat-005 - Space Grotesk (400/500/700) Google Fonts links in index.html
+      (commit `d752593`); PR #4 MERGED (`071dbd9`)
 - [x] feat-006 - Base styles in src/index.css: @import tokens.css; body
       bg/text/font from tokens, h1-h3 token type scale, accent links with
-      hover-only underline, ::selection accent; PR #5 MERGED (`d5fa615`)
+      hover-only underline, ::selection accent (commit `ad06d2e`);
+      PR #5 MERGED (`d5fa615`)
 
 ## Verification Evidence
 
