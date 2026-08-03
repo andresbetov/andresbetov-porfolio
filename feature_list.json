@@ -23,7 +23,7 @@
     {
       "id": "feat-003",
       "name": "Install dependencies",
-      "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test, prettier, eslint-config-prettier; add scripts: test (vitest run), test:e2e (playwright test), format (prettier --write); engines >=20",
+      "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test, prettier, eslint, eslint-config-prettier; add eslint.config.js (flat config, prettier-compatible); add scripts: lint (eslint .), test (vitest run), test:e2e (playwright test), format (prettier --write); run npx playwright install chromium; engines >=20",
       "dependencies": [
         "feat-002"
       ],
@@ -228,6 +228,28 @@
       "status": "not-started",
       "evidence": "",
       "branch": "feat/feat-021-readme-and-final-audit"
+    },
+    {
+      "id": "feat-022",
+      "name": "CI e2e job",
+      "description": "Add Playwright e2e job to .github/workflows/ci.yml: install chromium, run npm run test:e2e, upload screenshots (portfolio-desktop/mobile.png) and playwright-report as artifacts",
+      "dependencies": [
+        "feat-019"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-022-ci-e2e-job"
+    },
+    {
+      "id": "feat-023",
+      "name": "GitHub Pages deploy",
+      "description": "Add Pages workflow to .github/workflows/ci.yml: build on main push and deploy dist to GitHub Pages",
+      "dependencies": [
+        "feat-022"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-023-github-pages-deploy"
     }
   ]
 }

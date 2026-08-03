@@ -50,7 +50,7 @@ Chronological log of decisions for this project. One entry per decision.
 - **Context:** The site must build reliably and be publicly available.
 - **Decision:** GitHub Actions CI (lint/test/build on push/PR) with static deploy to GitHub Pages.
 - **Alternatives:** Netlify, Vercel, manual uploads.
-- **Consequences:** Remote repo required (created at feat-022/023); e2e job added at feat-022, Pages workflow at feat-023.
+- **Consequences:** Remote repo required (pushed via feature PRs); e2e job added at feat-022, Pages workflow at feat-023.
 
 ## ADR-007: Branch-per-feature workflow
 

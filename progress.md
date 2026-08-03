@@ -41,7 +41,8 @@
   visual/UX via Playwright specs with screenshots.
 - **CSS Modules**: component-scoped styling, no extra dependencies.
 - **Single content source**: data/site.js holds profile, skills, projects, links.
-- **CI + GitHub Pages**: lint/test/build (+e2e) on push/PR; static deploy to Pages.
+- **CI + GitHub Pages**: lint/test/build (+e2e) on push/PR; static deploy to Pages
+  (e2e job planned as feat-022, Pages workflow as feat-023).
 - **Branch per feature**: feat/<id>-<slug> from main, atomic commit per feature,
   merged via PR after gates pass. Alternatives considered: main-only commits.
 

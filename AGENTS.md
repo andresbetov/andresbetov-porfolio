@@ -3,13 +3,23 @@
 React (Vite) portfolio for Andres Bermudez (andresbetov). Platzi-inspired dark
 theme. Single-page marketing site: hero, about, skills, projects, contact.
 
+## Current state
+
+Pre-scaffold: no app code and no root `package.json` yet (feat-001 active).
+The test harness is committed and red by design: `src/__tests__/App.test.jsx`,
+`e2e/portfolio.spec.js`, `vitest.config.js`, `playwright.config.js` are the
+acceptance gates for each feature. Do not delete or weaken them to make CI
+pass. They also pin paths the scaffold must honor: `src/App.jsx` (test imports
+`../App`), `index.html` at root, `e2e/portfolio.spec.js` relative to root.
+
 ## Startup Workflow
 
 Every new session, in order:
 
 1. Read `feature_list.json`, `progress.md`, and `docs/decisions.md`.
 2. Read `session-handoff.md` if present.
-3. Run `./init.sh` (or the verification commands it runs) before editing.
+3. Run `./init.sh` before editing. Until feat-001 lands it prints
+   "Run feat-001 first" — that is the expected current behavior, not an error.
 4. Work on ONE feature at a time. Do not start a feature whose dependencies
    are not complete.
 
@@ -26,17 +36,31 @@ Every new session, in order:
 - Content is English. Person: software engineer, systems engineering student,
   Colombia. Projects: Elara App, hierarchical-clustering-portfolio-selector,
   xai-financial-predictor-engine.
+- Smoke tests assert exact hrefs: exactly three `https://github.com/andresbetov/*`
+  project links, and social links with `www.` on LinkedIn/Instagram (README
+  lists them without `www.` — copy from the test, not the README).
 
 ## Commands
 
+The npm scripts below only exist after feat-001/feat-003 (no root
+`package.json` yet). Verification sequence: install, lint, test, build.
+
 - `npm run dev` — dev server (default http://localhost:5173)
 - `npm run build` — production build (must pass before done)
-- `npm run lint` — ESLint (must pass before done)
-- `npm test` — Vitest smoke tests (must pass before done)
-- `npm run test:e2e` — Playwright specs (desktop + mobile; run before done
-  for visual/UX features)
-- `npm run format` — Prettier formatting
+- `npm run lint` — ESLint (must pass before done; no ESLint config is
+  committed yet, so this gate only becomes runnable with the scaffold)
+- `npm test` — Vitest smoke tests (jsdom; config picks up only
+  `src/**/*.test.{js,jsx}`, setup in `tests/setup.js`)
+- `npm run test:e2e` — Playwright, chromium only; auto-starts the dev server
+  on 5173; checks overflow at 1440/768/390/320, anchors, hover; screenshots
+  at 1440/390 into `/tmp/opencode/portfolio-{desktop,mobile}.png`
+- `npm run format` — Prettier (single quotes, semicolons, trailing commas
+  es5, 2-space indent per .editorconfig)
 - `npm run preview` — preview production build
+
+CI (`.github/workflows/ci.yml`, Node 20 per `.nvmrc`) runs `npm ci`, lint,
+test, build on push/PR. No e2e or format checks in CI yet — an e2e job lands
+with feat-022 and a Pages deploy with feat-023.
 
 ## Definition of done
 
