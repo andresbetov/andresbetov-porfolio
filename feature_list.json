@@ -1,0 +1,233 @@
+{
+  "features": [
+    {
+      "id": "feat-001",
+      "name": "Scaffold Vite + React app",
+      "description": "Run npm create vite@latest with the react template in this directory; confirm npm run dev serves the default page",
+      "dependencies": [],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-001-scaffold-vite-react-app"
+    },
+    {
+      "id": "feat-002",
+      "name": "Initialize git repository",
+      "description": "git init on main, create .gitignore (node_modules, dist, test artifacts, playwright-report), initial commit",
+      "dependencies": [
+        "feat-001"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-002-initialize-git-repository"
+    },
+    {
+      "id": "feat-003",
+      "name": "Install dependencies",
+      "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test; add scripts: test (vitest run), test:e2e (playwright test)",
+      "dependencies": [
+        "feat-002"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-003-install-dependencies"
+    },
+    {
+      "id": "feat-004",
+      "name": "Create tokens.css",
+      "description": "src/styles/tokens.css with every token from docs/design-system.md (colors, fonts, sizes, radii, spacing, motion), exported as CSS custom properties under :root",
+      "dependencies": [
+        "feat-003"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-004-create-tokens-css"
+    },
+    {
+      "id": "feat-005",
+      "name": "Load Space Grotesk font",
+      "description": "Add Space Grotesk (400/500/700) via Google Fonts in index.html; font stacks reference tokens",
+      "dependencies": [
+        "feat-004"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-005-load-space-grotesk-font"
+    },
+    {
+      "id": "feat-006",
+      "name": "Base styles",
+      "description": "Body background/text tokens, h1-h3 type scale per design system, base link styles, selection color",
+      "dependencies": [
+        "feat-005"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-006-base-styles"
+    },
+    {
+      "id": "feat-007",
+      "name": "Focus rings and reduced motion",
+      "description": "Global 2px accent focus ring on all interactive elements; prefers-reduced-motion disables transitions",
+      "dependencies": [
+        "feat-006"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-007-focus-rings-and-reduced-motion"
+    },
+    {
+      "id": "feat-008",
+      "name": "Navbar with anchor links",
+      "description": "Fixed top navbar: logo 'andresbetov', links About/Skills/Projects/Contact (#about #skills #projects #contact), accent hover",
+      "dependencies": [
+        "feat-007"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-008-navbar-with-anchor-links"
+    },
+    {
+      "id": "feat-009",
+      "name": "Hero section",
+      "description": "H1 'Andres Bermudez', tagline mentioning software engineer + space exploration, primary CTA 'View Projects' (#projects) and secondary 'Contact' (#contact)",
+      "dependencies": [
+        "feat-008"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-009-hero-section"
+    },
+    {
+      "id": "feat-010",
+      "name": "Section shells and footer",
+      "description": "Section components with 96px (64px mobile) padding and H2 headings; footer with social links (GitHub, LinkedIn, X, Instagram) with correct hrefs",
+      "dependencies": [
+        "feat-009"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-010-section-shells-and-footer"
+    },
+    {
+      "id": "feat-011",
+      "name": "About section",
+      "description": "Bio: systems engineering student + fullstack developer from Colombia, space-exploration interest, brief professional summary",
+      "dependencies": [
+        "feat-010"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-011-about-section"
+    },
+    {
+      "id": "feat-012",
+      "name": "Skills section",
+      "description": "Card grid: Backend (Java, Spring Boot, microservices), Frontend (React, JavaScript), Data/Quant (Python, portfolio analytics); cards per component spec",
+      "dependencies": [
+        "feat-011"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-012-skills-section"
+    },
+    {
+      "id": "feat-013",
+      "name": "Projects section",
+      "description": "3 hardcoded cards with titles, one-line descriptions, and GitHub links: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine",
+      "dependencies": [
+        "feat-012"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-013-projects-section"
+    },
+    {
+      "id": "feat-014",
+      "name": "Contact section",
+      "description": "Contact heading, short message, email or social CTA; linked from nav",
+      "dependencies": [
+        "feat-013"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-014-contact-section"
+    },
+    {
+      "id": "feat-015",
+      "name": "Responsive layout",
+      "description": "Breakpoints 768/1024px per design system: card grids collapse to one column on mobile, navbar links readable without wrapping",
+      "dependencies": [
+        "feat-014"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-015-responsive-layout"
+    },
+    {
+      "id": "feat-016",
+      "name": "Hover and motion states",
+      "description": "Hover states per design system (buttons, cards, links) with 150-200ms ease transitions; no motion when prefers-reduced-motion",
+      "dependencies": [
+        "feat-015"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-016-hover-and-motion-states"
+    },
+    {
+      "id": "feat-017",
+      "name": "Fix 320px overflow",
+      "description": "Verify no horizontal overflow at 320px (long words, fixed widths, padding); make grids fluid with minmax/auto-fit",
+      "dependencies": [
+        "feat-016"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-017-fix-320px-overflow"
+    },
+    {
+      "id": "feat-018",
+      "name": "Vitest smoke tests green",
+      "description": "src/__tests__/App.test.jsx passes: hero, 4 nav anchors, 3 project links, social hrefs, no overflow at 320px",
+      "dependencies": [
+        "feat-017"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-018-vitest-smoke-tests-green"
+    },
+    {
+      "id": "feat-019",
+      "name": "Playwright specs green",
+      "description": "e2e/portfolio.spec.js passes at 1440/768/390/320: no console errors, no overflow, anchors scroll, hover state, screenshots captured",
+      "dependencies": [
+        "feat-018"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-019-playwright-specs-green"
+    },
+    {
+      "id": "feat-020",
+      "name": "Meta tags and favicon",
+      "description": "Title, description, Open Graph tags, theme-color, and a simple favicon (SVG 'AB' mark in accent green)",
+      "dependencies": [
+        "feat-019"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-020-meta-tags-and-favicon"
+    },
+    {
+      "id": "feat-021",
+      "name": "README and final audit",
+      "description": "Minimal README (project, stack, commands, links); run ui-designer audit and qa-visual-tester, fix any P0/P1 findings",
+      "dependencies": [
+        "feat-020"
+      ],
+      "status": "not-started",
+      "evidence": "",
+      "branch": "feat/feat-021-readme-and-final-audit"
+    }
+  ]
+}
