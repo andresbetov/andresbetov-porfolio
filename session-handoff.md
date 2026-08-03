@@ -3,18 +3,16 @@
 ## Current Objective
 
 - Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001..005 on main. Next: feat-006.
-- Branch / commit: main @ `071dbd9` (feat-005 merged via PR #4)
+- Current status: feat-001..006 on main. Next: feat-007.
+- Branch / commit: main @ `d5fa615` (feat-006 merged via PR #5)
 
 ## Completed This Session
 
-- [x] feat-004 - tokens.css: all design-system tokens as CSS custom properties
-      under :root; PR #3 MERGED (`6007566`)
 - [x] feat-005 - Space Grotesk (400/500/700) Google Fonts links in index.html;
       PR #4 MERGED (`071dbd9`)
-- [x] package-lock.json engines >=22 synced (`9e59b91`)
-- [x] feature_list.json corrected: merge evidence recorded, feat-004/005 done,
-      feat-006 active
+- [x] feat-006 - Base styles in src/index.css: @import tokens.css; body
+      bg/text/font from tokens, h1-h3 token type scale, accent links with
+      hover-only underline, ::selection accent; PR #5 MERGED (`d5fa615`)
 
 ## Verification Evidence
 
@@ -22,17 +20,16 @@
 |---|---|---|---|
 | Init | ./init.sh | install+lint pass; test aborts by design | run build separately |
 | Lint | npm run lint | PASS | eslint . clean |
-| Build | npm run build | PASS | dist/ contains font links |
-| Format | npx prettier --check | PASS | tokens.css, index.html |
+| Build | npm run build | PASS | tokens inlined (0ae98a/13161c/Space Grotesk in dist CSS) |
+| Format | npx prettier --check | PASS | tokens.css, index.html, index.css |
 | Test | npm test | RED (4/1) | by design until feat-018 (ADR-008) |
-| CI | gh pr checks 3, 4 | lint+build pass, test red-by-design | merged per ADR-008 |
+| CI | gh pr checks 3, 4, 5 | lint+build pass, test red-by-design | merged per ADR-008 |
 
 ## Files Changed
 
-- `src/styles/tokens.css` (feat-004)
 - `index.html` (feat-005 font links)
+- `src/index.css` (feat-006 base styles)
 - `feature_list.json`, `progress.md`, `session-handoff.md`
-- `package-lock.json` (engines sync)
 
 ## Decisions Made
 
@@ -49,10 +46,10 @@
 3. Review this handoff.
 4. Run `./init.sh` (test step aborts it by design until feat-018; then run
    `npm run build` separately).
-5. Branch from main: `git checkout -b feat/feat-006-base-styles`.
+5. Branch from main: `git checkout -b feat/feat-007-focus-rings-and-reduced-motion`.
 
 ## Recommended Next Step
 
-- feat-006: base styles in `src/index.css` (replace Vite template styles):
-  body bg `--color-bg` + text `--color-text` + font-family, h1-h3 type scale
-  from tokens, link color accent with hover-only underline, selection color.
+- feat-007: in `src/index.css` add `:focus-visible { outline: 2px solid
+  var(--color-accent); outline-offset: 2px; }` on interactive elements and
+  `@media (prefers-reduced-motion: reduce)` to disable transitions/animations.

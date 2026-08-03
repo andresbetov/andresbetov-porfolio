@@ -50,8 +50,8 @@
       "name": "Base styles",
       "description": "Body background/text tokens, h1-h3 type scale per design system, base link styles, selection color",
       "dependencies": ["feat-005"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "src/index.css replaced template styles: @import tokens.css; body bg/color/font from tokens (color-scheme dark, antialiasing); h1-h3 weight 700 with token sizes/line-heights; links accent with hover-only underline; ::selection accent bg + dark text; verification: prettier, eslint ., vite build pass (accent 0ae98a, bg 13161c, Space Grotesk present in dist CSS); npm test red-by-design per ADR-008; PR #5 merged to main (merge commit d5fa615)",
       "branch": "feat/feat-006-base-styles"
     },
     {
@@ -59,7 +59,7 @@
       "name": "Focus rings and reduced motion",
       "description": "Global 2px accent focus ring on all interactive elements; prefers-reduced-motion disables transitions",
       "dependencies": ["feat-006"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-007-focus-rings-and-reduced-motion"
     },
