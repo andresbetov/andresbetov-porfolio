@@ -52,6 +52,36 @@ Chronological log of decisions for this project. One entry per decision.
 - **Alternatives:** Netlify, Vercel, manual uploads.
 - **Consequences:** Remote repo required (pushed via feature PRs); e2e job added at feat-022, Pages workflow at feat-023.
 
+## ADR-008: Red-test merge policy before feat-018
+
+- **Date:** 2026-08-03
+- **Context:** The Vitest smoke tests are committed as acceptance gates and are
+  red by design until the app sections exist (feat-018). Strictly requiring
+  `npm test` green on every PR would block merging features whose gates are
+  deliberately still open.
+- **Decision:** Until feat-018, a feature is mergeable when lint + build pass;
+  the test step may stay red by design. From feat-018 on, `npm test` must pass
+  for every PR.
+- **Alternatives:** Stack all features and batch-merge at feat-018; block every
+  merge until gates close.
+- **Consequences:** PR test steps will show red until feat-018; reviewers must
+  distinguish "red by design" (assertions against not-yet-built sections) from
+  regressions (lint/build failures, infra errors).
+
+## ADR-009: Runtime is Node 22 LTS, not Node 20
+
+- **Date:** 2026-08-03
+- **Context:** The original harness pinned Node 20 (`.nvmrc`, ci.yml), but
+  jsdom 30 (required by the Vitest stack) declares engines
+  `^22.22.2 || ^24.15 || >=26` and crashes on Node 20 at test startup
+  (`webidl.util.markAsUncloneable is not a function`). Node 20 is also EOL
+  (April 2026).
+- **Decision:** Run the project on Node 22 LTS: `.nvmrc` = 22, ci.yml
+  `node-version: 22`, package.json `engines: node >=22`.
+- **Alternatives:** Pin jsdom to a Node-20-compatible version (keeps an EOL
+  runtime); move to Node 24 LTS.
+- **Consequences:** CI and local development must use Node >= 22.22.2.
+
 ## ADR-007: Branch-per-feature workflow
 
 - **Date:** 2026-08-02

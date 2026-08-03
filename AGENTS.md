@@ -64,7 +64,11 @@ so the runtime is Node 22 LTS.
 
 ## Definition of done
 
-- `npm run build`, `npm run lint`, and `npm test` all pass.
+- `npm run build` and `npm run lint` must pass before done.
+- `npm test` is red by design until feat-018 (smoke tests are acceptance
+  gates for the app sections, not regressions). Until then the merge policy
+  is: lint + build green is sufficient (recorded in ADR-008). From feat-018
+  on, `npm test` must pass too.
 - For visual/UX features: `npm run test:e2e` passes and screenshots are
   captured at 1440px and 390px.
 - UI follows docs/design-system.md (ui-designer audit for non-trivial changes).
@@ -78,7 +82,8 @@ so the runtime is Node 22 LTS.
 - Commit once per completed feature (atomic). Record the commit id as
   evidence in `feature_list.json` and `session-handoff.md`.
 - Push the branch and open a pull request. CI runs lint/test/build on the PR.
-- Merge to main only after all verification gates pass.
+- Merge to main after the gates in Definition of done pass (see ADR-008 for
+  the red-test policy before feat-018).
 - Never commit feature work directly to main.
 
 ## End of Session
