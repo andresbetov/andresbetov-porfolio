@@ -167,8 +167,8 @@
       "name": "Playwright specs green",
       "description": "e2e/portfolio.spec.js passes at 1440/768/390/320: no console errors, no overflow, anchors scroll, hover state, screenshots captured",
       "dependencies": ["feat-018"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "evidence pass - all 10 e2e gates green since feat-013, re-verified this session (10 passed (6.3s)): no horizontal overflow at 1440/768/390/320, loads with no console or page errors, all sections exist and nav anchors scroll, three project cards linking to right repos, primary button hover state, full-page screenshots at desktop 1440 and mobile 390 captured to /tmp/opencode/portfolio-{desktop,mobile}.png; no code changes needed; vitest 5/5, lint+build green (init.sh)",
       "branch": "feat/feat-019-playwright-specs-green"
     },
     {
@@ -176,7 +176,7 @@
       "name": "Meta tags and favicon",
       "description": "Title, description, Open Graph tags, theme-color, and a simple favicon (SVG 'AB' mark in accent green)",
       "dependencies": ["feat-019"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-020-meta-tags-and-favicon"
     },

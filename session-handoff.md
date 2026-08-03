@@ -3,75 +3,53 @@
 ## Current Objective
 
 - Goal: Build a Platzi-inspired dark portfolio site for Andres Bermudez (andresbetov)
-- Current status: feat-001..017 on main (feat-017 PR pending merge). Next: feat-018.
-- Branch / commit: `feat/feat-017-fix-320px-overflow` @ `a3fdacd` (feature) +
-  records commit pending; PR #16 not opened yet.
+- Current status: feat-001..019 on main (feat-019 PR pending merge). Next: feat-020.
+- Branch / commit: `feat/feat-019-playwright-specs-green` (evidence pass, records
+  committed); PR #18 not opened yet.
 
 ## Completed This Session
 
-- [x] feat-017 - Fix 320px overflow, verified and hardened (commit `a3fdacd`):
-  - Temp audit spec at 320/300/280px: scrollWidth-clientWidth = 0 and 0
-    offenders at every width. Repo-name titles wrap safely at their literal
-    hyphens (probe spec confirmed: "xai-financial-predictor-engine" breaks to
-    "xai-financial-predictor-" + "-engine", 2 lines).
-  - Grids were already fluid: `repeat(N, minmax(0, 1fr))` + explicit 3/2/1
-    breakpoints. Decision ADR-012: keep explicit breakpoints, reject
-    auto-fit minmax() (it would make the tablet column count viewport-driven
-    and could silently change the audit-verified 2-col tablet layout).
-  - Hardening: `overflow-wrap: break-word` on Projects `.cardTitle` (titles
-    come from site.js, so a future hyphen-less repo name can't overflow 320px).
-  - Verified: vitest 5/5, e2e 10/10, lint + build + prettier green.
-- [x] No subagents used (ui-designer / qa-visual-tester still emit the
-      session-insert DB error) - code-level audits only, per user instruction.
+- [x] feat-019 - Playwright specs green, evidence pass (no code changes):
+  - `npm run test:e2e`: 10 passed (10) - all gates green since feat-013:
+    no horizontal overflow at 1440/768/390/320; loads with no console or page
+    errors; all sections exist and nav anchors scroll; three project cards
+    linking to the right repositories; primary button hover state; full-page
+    screenshots at desktop 1440 and mobile 390 captured to
+    /tmp/opencode/portfolio-{desktop,mobile}.png.
+- [x] No subagents used (user instruction - ui-designer / qa-visual-tester
+      spawn errors persist).
 
 ## Skills Usage Notes (for future sessions)
 
-- frontend-design skill: restraint applied - no churn on verified layouts;
-  one-line hardening instead of reworking grids (minimal directions need
-  precision).
-- harness-creator skill: full pipeline executed - init.sh, audit-first,
-  evidence recording in feature_list.json/progress.md/session-handoff.md,
-  ADR added for the grid decision (ADR-012), atomic commit, PR.
-- webapp-testing skill: python playwright not installed; used the project's
-  @playwright/test (node) with the temp-spec-in-e2e/ audit recipe. This
-  session also used a probe spec (temp) to inspect computed styles/rects.
+- harness-creator skill: full pipeline - init.sh, evidence-first, state files,
+  ADR-008 period closed at feat-018 (npm test now mandatory on every merge),
+  atomic docs commit, PR.
+- No code change, so frontend-design/webapp-testing skills not needed this pass.
 
 ## Verification Evidence
 
-| Check       | Command              | Result                                | Notes                        |
-| ----------- | -------------------- | ------------------------------------- | ---------------------------- |
-| Init        | ./init.sh            | PASS                                  | full verification run inside |
-| Lint        | npm run lint         | PASS                                  | eslint . clean               |
-| Build       | npm run build        | PASS                                  |                              |
-| Format      | npx prettier --check | PASS                                  | css + json + md              |
-| Test        | npm test             | 5 passed (5)                          | ALL GREEN since feat-013     |
-| e2e         | npm run test:e2e     | 10 passed (10)                        | screenshots 1440/390         |
-| 320px audit | temp spec            | 0 overflow, 0 offenders @ 320/300/280 | specs deleted after          |
+| Check | Command          | Result         | Notes                      |
+| ----- | ---------------- | -------------- | -------------------------- |
+| Init  | ./init.sh        | PASS           | vitest 5/5 inside          |
+| e2e   | npm run test:e2e | 10 passed (10) | screenshots 1440/390 fresh |
+| Test  | npm test         | 5 passed (5)   | from init.sh               |
 
 ## Files Changed
 
-- `src/components/Projects/Projects.module.css` - overflow-wrap: break-word on card titles
-- `docs/decisions.md` - ADR-012 (explicit grid breakpoints over auto-fit)
-- `feature_list.json` - feat-017 done (a3fdacd), feat-018 active
+- `feature_list.json` - feat-019 done (evidence pass), feat-020 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Decisions Made
 
-- ADR-012: keep explicit 3/2/1 grid breakpoints (minmax(0,1fr) already fluid);
-  auto-fit rejected because column count would become viewport/content-driven
-  and could silently break the audit-verified tablet 2-col layout.
-- Hardening over rework: the 320px gate was already green at 320/300/280; the
-  only real risk is data-driven titles, covered by overflow-wrap: break-word.
+- None this session (evidence pass only).
 
 ## Blockers / Risks
 
 - Subagent infra (ui-designer / qa-visual-tester) down: session-insert DB
-  error on spawn. User instructed NOT to use them - code-level + scripted
-  audits only.
+  error on spawn; user instructed not to use them.
 - Model cannot view images: numeric audits only; screenshots saved for user
   review (/tmp/opencode/portfolio-*.png).
-- feat-018/019 are evidence-recording passes: their gates (vitest 5/5, e2e
-  10/10) have been green since feat-013 - no new work expected.
+- feat-020 is real work: meta tags + favicon in index.html.
 
 ## Next Session Startup
 
@@ -79,13 +57,22 @@
 2. Read `feature_list.json`, `progress.md`, `docs/decisions.md`.
 3. Review this handoff.
 4. Run `./init.sh`.
-5. On `feat/feat-017-fix-320px-overflow`: merge PR #16 (CI fully green),
-   checkout main, pull, branch `feat/feat-018-vitest-smoke-tests-green`.
+5. On `feat/feat-019-playwright-specs-green`: merge PR #18 (CI fully green),
+   record merge commit in progress.md on main, checkout main, pull, branch
+   `feat/feat-020-meta-tags-and-favicon`.
 
 ## Recommended Next Step
 
-- Merge feat-017 (PR #16), then feat-018 - Vitest smoke tests green: evidence
-  pass - run npm test (expect 5/5), record evidence in feature_list.json +
-  progress.md, merge. Then feat-019 is the same for e2e (10/10), then real
-  work resumes at feat-020 (meta tags + favicon: title, description, OG tags,
-  theme-color, SVG 'AB' favicon in accent green).
+- feat-020 - Meta tags and favicon:
+  - index.html: `<title>` (e.g. "Andres Bermudez - Software Engineer"? NO - avoid
+    the "software engineer" phrase only in page CONTENT gates; the title tag is
+    not matched by the hero vitest gate (selector-limited to p/span/h2), so
+    title wording is free, but keep it accurate - he is a software engineer and
+    systems engineering student in Colombia), meta description, Open Graph
+    (og:title, og:description, og:type website, og:url, og:image optional),
+    theme-color = --color-bg (#0e1116 per tokens), lang="en".
+  - Favicon: SVG 'AB' mark in accent green (#97c93d per tokens) - inline data
+    URI in index.html or /public/favicon.svg; simple geometric mark per
+    frontend-design restraint.
+  - Verification: build + preview check, vitest 5/5, e2e 10/10 (unchanged),
+    plus a quick head audit (title/description/theme-color/favicon present).
