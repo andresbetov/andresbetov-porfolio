@@ -123,7 +123,7 @@
       "description": "Contact heading, short message, email or social CTA; linked from nav",
       "dependencies": ["feat-013"],
       "status": "done",
-      "evidence": "commit f5f6085 on feat/feat-014-contact-section; project links corrected to real repos (verified via GitHub API); vitest 5/5, e2e 10/10, lint+build green",
+      "evidence": "commit f5f6085 on feat/feat-014-contact-section; project links corrected to real repos (verified via GitHub API); vitest 5/5, e2e 10/10, lint+build green; merged to main via PR #13 (merge commit 065be81)",
       "branch": "feat/feat-014-contact-section"
     },
     {
@@ -131,8 +131,8 @@
       "name": "Responsive layout",
       "description": "Breakpoints 768/1024px per design system: card grids collapse to one column on mobile, navbar links readable without wrapping",
       "dependencies": ["feat-014"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 8c4a7a7 on feat/feat-015-responsive-layout; tablet 2-col grids at max-width 1024px (About/Skills/Projects), mobile stacked navbar (logo row + full-width links row, no per-link wrap, overflow 0 at 320/390), mobile scroll-margin-top 96px; audit-verified breakpoints 768/1024/1025; vitest 5/5, e2e 10/10, lint+build+prettier green",
       "branch": "feat/feat-015-responsive-layout"
     },
     {
@@ -140,7 +140,7 @@
       "name": "Hover and motion states",
       "description": "Hover states per design system (buttons, cards, links) with 150-200ms ease transitions; no motion when prefers-reduced-motion",
       "dependencies": ["feat-015"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-016-hover-and-motion-states"
     },
