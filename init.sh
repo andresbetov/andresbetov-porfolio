@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "=== Harness Initialization ==="
+echo "=== Project Initialization ==="
 
 if [ -f package.json ]; then
   PM="npm"

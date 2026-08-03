@@ -16,14 +16,14 @@
       "dependencies": [
         "feat-001"
       ],
-      "status": "not-started",
-      "evidence": "",
+      "status": "done",
+      "evidence": "git init (main), .gitignore and initial commit 68206bc",
       "branch": "feat/feat-002-initialize-git-repository"
     },
     {
       "id": "feat-003",
       "name": "Install dependencies",
-      "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test; add scripts: test (vitest run), test:e2e (playwright test)",
+      "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test, prettier, eslint-config-prettier; add scripts: test (vitest run), test:e2e (playwright test), format (prettier --write); engines >=20",
       "dependencies": [
         "feat-002"
       ],
