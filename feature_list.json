@@ -6,7 +6,7 @@
       "description": "Run npm create vite@latest with the react template in this directory; confirm npm run dev serves the default page",
       "dependencies": [],
       "status": "done",
-      "evidence": "create-vite react template (Vite 8.2.0, React 19.2.8): index.html, package.json, vite.config.js, src/{main,App,index}.{jsx,css}, public/, .oxlintrc.json copied into repo root, harness files untouched; npm run dev serves default page at localhost:5173 (HTTP 200); init.sh passes install, lint (oxlint), build; commit 8ba49cf",
+      "evidence": "create-vite react template (Vite 8.2.0, React 19.2.8): index.html, package.json, vite.config.js, src/{main,App,index}.{jsx,css}, public/, .oxlintrc.json copied into repo root, harness files untouched; npm run dev serves default page at localhost:5173 (HTTP 200); init.sh passes install, lint (oxlint), build; commit 8ba49cf; merged to main via PR #1 (merge commit 9e10eb8)",
       "branch": "feat/feat-001-scaffold-vite-react-app"
     },
     {
@@ -24,7 +24,7 @@
       "description": "npm install; add devDependencies: vitest, @testing-library/react, @testing-library/jest-dom, jsdom, @playwright/test, prettier, eslint, eslint-config-prettier; add eslint.config.js (flat config, prettier-compatible); add scripts: lint (eslint .), test (vitest run), test:e2e (playwright test), format (prettier --write); run npx playwright install chromium; engines >=20",
       "dependencies": ["feat-002"],
       "status": "done",
-      "evidence": "devDeps installed (vitest 4, RTL 16, jest-dom 7, jsdom 30, @playwright/test 1.62, prettier 3.9, eslint 10 + @eslint/js + globals + eslint-config-prettier); oxlint replaced by ESLint: removed .oxlintrc.json, lint script now eslint . (decision: keep ESLint per plan; template shipped oxlint); scripts test (vitest run), test:e2e (playwright test), format (prettier --write .) added; engines node >=20; npx playwright install chromium done; .opencode added to eslint/prettier ignores; full-repo prettier format applied; verification: lint pass, build pass, npm test red-by-design (4 failed / 1 passed - App gates green at feat-018); commit 1c164e1",
+      "evidence": "devDeps installed (vitest 4, RTL 16, jest-dom 7, jsdom 30, @playwright/test 1.62, prettier 3.9, eslint 10 + @eslint/js + globals + eslint-config-prettier); oxlint replaced by ESLint: removed .oxlintrc.json, lint script now eslint . (decision: keep ESLint per plan; template shipped oxlint); scripts test (vitest run), test:e2e (playwright test), format (prettier --write .) added; engines node >=22 (ADR-009, jsdom 30 requires ^22.22.2); npx playwright install chromium done; .opencode added to eslint/prettier ignores; full-repo prettier format applied; verification: lint pass, build pass, npm test red-by-design (4 failed / 1 passed - App gates green at feat-018); commits 1c164e1, 10a0c9e (Node 22 bump); merged to main via PR #2 (merge commit 960b6af)",
       "branch": "feat/feat-003-install-dependencies"
     },
     {
@@ -32,7 +32,7 @@
       "name": "Create tokens.css",
       "description": "src/styles/tokens.css with every token from docs/design-system.md (colors, fonts, sizes, radii, spacing, motion), exported as CSS custom properties under :root",
       "dependencies": ["feat-003"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-004-create-tokens-css"
     },
