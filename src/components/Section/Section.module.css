@@ -1,0 +1,14 @@
+.section {
+  padding: var(--space-9) var(--space-5);
+  scroll-margin-top: var(--space-8);
+}
+
+.heading {
+  margin: 0 0 var(--space-6);
+}
+
+@media (max-width: 767px) {
+  .section {
+    padding: var(--space-8) var(--space-4);
+  }
+}
