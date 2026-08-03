@@ -140,8 +140,8 @@
       "name": "Hover and motion states",
       "description": "Hover states per design system (buttons, cards, links) with 150-200ms ease transitions; no motion when prefers-reduced-motion",
       "dependencies": ["feat-015"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit 074ff06 on feat/feat-016-hover-and-motion-states; 150ms ease color/border transitions on buttons, nav logo+links, footer socials, contact CTA, project links; card hover fill surface-2 + border-color (About facts, Skills cards, Projects cards) per design-system Motion section and surface-2 token role; reduced-motion already global in index.css; vitest 5/5, e2e 10/10 (hover gate green), lint+build+prettier green",
       "branch": "feat/feat-016-hover-and-motion-states"
     },
     {
@@ -149,7 +149,7 @@
       "name": "Fix 320px overflow",
       "description": "Verify no horizontal overflow at 320px (long words, fixed widths, padding); make grids fluid with minmax/auto-fit",
       "dependencies": ["feat-016"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-017-fix-320px-overflow"
     },

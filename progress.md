@@ -2,9 +2,9 @@
 
 ## Current State
 
-**Last Updated:** 2026-08-03
+**Last Updated:** 2026-08-02
 **Session ID:** [optional]
-**Active Feature:** feat-015 - Responsive layout
+**Active Feature:** feat-017 - Fix 320px overflow
 
 ## Status
 
@@ -24,18 +24,22 @@
 - [x] feat-012 - Skills section (Backend/Frontend/Data-Quant card grid, Card spec, accent dot markers); commit `4842539`; vitest 4/1, e2e 9/1 stable
 - [x] feat-013 - Projects section (3 cards: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine; one-line descriptions + GitHub links); gates scoped to #projects (ADR-011); commit `793f9b1`; vitest 5/5, e2e 10/10 - ALL GATES GREEN
 - [x] feat-014 - Contact section (heading, short message, primary CTA to LinkedIn); project links corrected to real repos (AutomatedAudit-Frontend, hybrid-fin-inference-agent-in-bvc) verified via GitHub API; removed dead site.sections + Section map (all sections now components); commit `f5f6085`, merged via PR #13 (`065be81`); vitest 5/5, e2e 10/10
-- [x] feat-015 - Responsive layout: tablet 768-1024 two-column grids (About facts, Skills cards, Projects cards) via max-width 1024px; mobile navbar now an intentional stacked layout (logo row + full-width links row, space-between, tighter gaps, no per-link wrapping, overflow 0 at 320/390 - was wrapping haphazardly before); mobile scroll-margin-top bumped to 96px for the taller nav; commit `8c4a7a7`; vitest 5/5, e2e 10/10, lint+build+prettier green; breakpoints audit-verified at 768/1024/1025/1440
+- [x] feat-015 - Responsive layout: tablet 768-1024 two-column grids (About facts, Skills cards, Projects cards) via max-width 1024px; mobile navbar now an intentional stacked layout (logo row + full-width links row, space-between, tighter gaps, no per-link wrapping, overflow 0 at 320/390 - was wrapping haphazardly before); mobile scroll-margin-top bumped to 96px for the taller nav; commit `8c4a7a7`, merged via PR #14 (`555e37d`); vitest 5/5, e2e 10/10, lint+build+prettier green; breakpoints audit-verified at 768/1024/1025/1440
+- [x] feat-016 - Hover and motion states: 150ms ease transitions for color/border on buttons (hero primary/secondary, contact CTA), nav logo+links, footer socials, project links; card hover fill `--color-surface-2` + border color on About facts, Skills cards, Projects cards (design-system Motion section + surface-2 "hover fills" token); reduced-motion already handled globally in index.css; commit `074ff06`; vitest 5/5, e2e 10/10 (hover gate green), lint+build+prettier green
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress (feat-015 committed as `8c4a7a7`, pending PR merge)
+- Nothing in progress (feat-016 committed as `074ff06`, pending PR merge)
 
 ### What's Next
 
-1. feat-016 - Hover and motion states (150-200ms ease transitions, hover on buttons/cards/links, prefers-reduced-motion respected)
+1. feat-017 - Fix 320px overflow (fluid grids with minmax/auto-fit where needed; audit says overflow is 0 at 320 today - verify and harden)
+2. feat-018 - Vitest smoke tests green (5/5 already since feat-013 - record evidence)
+3. feat-019 - Playwright specs green (10/10 already since feat-013 - record evidence)
+4. feat-020 - Meta tags and favicon
 
 ## Blockers / Risks
 
@@ -61,11 +65,10 @@
 
 ## Files Modified This Session
 
-- `src/components/{About,Skills,Projects}/*.module.css` - tablet 2-col grids (max-width 1024px)
-- `src/components/Navbar/Navbar.module.css` - mobile stacked layout (wrap, links full-width row, space-between, gap 8px, tighter padding)
-- `src/components/Section/Section.module.css` - mobile scroll-margin-top 96px
-- `feature_list.json` - feat-015 done (8c4a7a7), feat-016 active
-- `progress.md`, `session-handoff.md` - session records
+- `src/components/{Hero,Navbar,Footer,Contact}/*.module.css` - 150ms ease transitions on interactive elements (color/background/border)
+- `src/components/{About,Skills,Projects}/*.module.css` - card hover fill surface-2 + border-color transition; Projects link transition
+- `feature_list.json` - feat-016 done (074ff06), feat-017 active
+- `progress.md`, `session-handoff.md` - session records (progress.md date corrected to 2026-08-02)
 
 ## Evidence of Completion
 
@@ -74,8 +77,8 @@
 - [x] Build passes: `vite build`, dist/ generated
 - [x] Prettier clean: `npx prettier --check` on changed files
 - [x] Tests pass: 5 passed (5) - ALL GREEN since feat-013
-- [x] e2e regression: 10 passed (10) - ALL GREEN since feat-013; screenshots captured at 1440/390
-- [x] Responsive audit (temp playwright spec): overflow 0 at 320/390/768/1024/1025/1440; nav fits at all widths; grids 1-col <=767, 2-col 768-1024, 3-col 1025+
+- [x] e2e regression: 10 passed (10) - ALL GREEN since feat-013; screenshots captured at 1440/390; hover gate green with transitions
+- [x] Responsive audit (temp playwright spec, feat-015): overflow 0 at 320/390/768/1024/1025/1440; nav fits at all widths; grids 1-col <=767, 2-col 768-1024, 3-col 1025+
 
 ## Known Conflict (resolved at feat-013)
 
