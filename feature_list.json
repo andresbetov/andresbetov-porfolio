@@ -194,8 +194,8 @@
       "name": "CI e2e job",
       "description": "Add Playwright e2e job to .github/workflows/ci.yml: install chromium, run npm run test:e2e, upload screenshots (portfolio-desktop/mobile.png) and playwright-report as artifacts",
       "dependencies": ["feat-019"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit fedef90 on feat/feat-022-ci-e2e-job; added e2e job to .github/workflows/ci.yml (separate from verify): ubuntu-latest, Node 22 + npm cache, npm ci, npx playwright install --with-deps chromium, npm run test:e2e (webServer auto-starts dev server), upload-artifact@v4 with if: always() for portfolio-screenshots (/tmp/opencode/portfolio-{desktop,mobile}.png) and playwright-report (retention 7d); verify job unchanged; e2e job ran green on PR CI (10/10)",
       "branch": "feat/feat-022-ci-e2e-job"
     },
     {
@@ -203,7 +203,7 @@
       "name": "GitHub Pages deploy",
       "description": "Add Pages workflow to .github/workflows/ci.yml: build on main push and deploy dist to GitHub Pages",
       "dependencies": ["feat-022"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-023-github-pages-deploy"
     }
