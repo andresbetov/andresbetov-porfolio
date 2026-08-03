@@ -24,6 +24,14 @@
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-card);
   padding: var(--space-5);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.fact:hover {
+  background: var(--color-surface-2);
+  border-color: var(--color-border);
 }
 
 .factLabel {

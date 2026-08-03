@@ -28,6 +28,9 @@
   border-radius: var(--radius-button);
   padding: var(--space-3) var(--space-6);
   font-weight: var(--font-weight-medium);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .primary:hover {
@@ -42,6 +45,10 @@
   border-radius: var(--radius-card);
   padding: var(--space-3) var(--space-6);
   font-weight: var(--font-weight-medium);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
 }
 
 .secondary:hover {
