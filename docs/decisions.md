@@ -107,3 +107,26 @@ Chronological log of decisions for this project. One entry per decision.
   make one project card link to the profile URL (misrepresents the projects).
 - **Consequences:** feat-013 flips both projects gates to green (vitest 5/5,
   e2e 10/10).
+
+## ADR-012: Keep explicit grid breakpoints over auto-fit
+
+- **Date:** 2026-08-02
+- **Context:** feat-017 ("Fix 320px overflow") asks to make grids fluid with
+  minmax/auto-fit. The content grids (About facts, Skills cards, Projects
+  cards) already use `minmax(0, 1fr)` columns with explicit media-query
+  breakpoints: 3 columns above 1024px, 2 columns 768-1024px, 1 column below
+  768px (verified by the feat-015 audit). An audit at 320/300/280px shows
+  zero horizontal overflow and zero offending elements; long repo-name titles
+  wrap safely at their hyphen break opportunities.
+- **Decision:** Keep the explicit 3/2/1 column breakpoints. `minmax(0, 1fr)`
+  is the fluid primitive that prevents grid blowout at narrow widths;
+  converting to `repeat(auto-fit, minmax(...))` would make the column count
+  viewport/content-driven and could silently change the audit-verified
+  two-column tablet layout. Harden instead: `overflow-wrap: break-word` on
+  project card titles, which are data-driven from `src/data/site.js` and could
+  otherwise carry an unbreakable repo name.
+- **Alternatives:** Convert all grids to `auto-fit minmax()` (column count no
+  longer matches the design-system breakpoints); add a global
+  `overflow-wrap: break-word` rule (broader than the known risk).
+- **Consequences:** Grid behavior stays deterministic and audit-verified;
+  project titles cannot overflow at 320px even if content changes.

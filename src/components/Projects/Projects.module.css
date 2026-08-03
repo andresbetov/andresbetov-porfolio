@@ -28,6 +28,7 @@
   margin: 0 0 var(--space-3);
   font-size: var(--text-h3);
   line-height: var(--line-height-h3);
+  overflow-wrap: break-word;
 }
 
 .description {
