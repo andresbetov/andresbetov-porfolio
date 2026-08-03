@@ -4,7 +4,7 @@
 
 **Last Updated:** 2026-08-03
 **Session ID:** [optional]
-**Active Feature:** feat-014 - Contact section
+**Active Feature:** feat-015 - Responsive layout
 
 ## Status
 
@@ -23,6 +23,7 @@
 - [x] feat-011 - About section (bio lead/summary + 3 fact cards, Card spec, 3-col -> 1-col grid); commit `45a7544`, PR #10 open; Sections wrapped in 1120px centered container (conformance); vitest 4/1, e2e 9/1 stable
 - [x] feat-012 - Skills section (Backend/Frontend/Data-Quant card grid, Card spec, accent dot markers); commit `4842539`; vitest 4/1, e2e 9/1 stable
 - [x] feat-013 - Projects section (3 cards: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine; one-line descriptions + GitHub links); gates scoped to #projects (ADR-011); commit `793f9b1`; vitest 5/5, e2e 10/10 - ALL GATES GREEN
+- [x] feat-014 - Contact section (heading, short message, primary CTA to LinkedIn); project links corrected to real repos (AutomatedAudit-Frontend, hybrid-fin-inference-agent-in-bvc) verified via GitHub API; removed dead site.sections + Section map (all sections now components); commit `f5f6085`; vitest 5/5, e2e 10/10
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
@@ -33,9 +34,8 @@
 
 ### What's Next
 
-1. feat-014 - Contact section (heading, short message, email/social CTA)
-2. feat-015 - Responsive layout polish
-3. feat-016 - (per feature_list.json)
+1. feat-015 - Responsive layout (breakpoints 768/1024px: grids collapse, navbar links readable)
+2. feat-016 - (per feature_list.json)
 
 ## Blockers / Risks
 
@@ -61,12 +61,10 @@
 
 ## Files Modified This Session
 
-- `src/components/Projects/` - feat-013 projects section (jsx + module.css, new)
-- `src/data/site.js` - added site.projects (title, 3 cards with hrefs)
-- `src/App.jsx` - renders <Projects />, filters projects from shell map
-- `src/__tests__/App.test.jsx` + `e2e/portfolio.spec.js` - gates scoped to #projects (ADR-011)
-- `docs/decisions.md` - ADR-011
-- `feature_list.json` - feat-013 done (793f9b1), feat-014 active
+- `src/components/Contact/` - feat-014 contact section (jsx + module.css, new)
+- `src/data/site.js` - added site.contact; fixed project hrefs to real repos; removed dead site.sections
+- `src/App.jsx` - direct composition (About/Skills/Projects/Contact), no shell map
+- `feature_list.json` - feat-014 done (f5f6085), feat-015 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion

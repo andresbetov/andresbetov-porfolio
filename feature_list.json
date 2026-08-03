@@ -122,8 +122,8 @@
       "name": "Contact section",
       "description": "Contact heading, short message, email or social CTA; linked from nav",
       "dependencies": ["feat-013"],
-      "status": "active",
-      "evidence": "",
+      "status": "done",
+      "evidence": "commit f5f6085 on feat/feat-014-contact-section; project links corrected to real repos (verified via GitHub API); vitest 5/5, e2e 10/10, lint+build green",
       "branch": "feat/feat-014-contact-section"
     },
     {
@@ -131,7 +131,7 @@
       "name": "Responsive layout",
       "description": "Breakpoints 768/1024px per design system: card grids collapse to one column on mobile, navbar links readable without wrapping",
       "dependencies": ["feat-014"],
-      "status": "not-started",
+      "status": "active",
       "evidence": "",
       "branch": "feat/feat-015-responsive-layout"
     },
