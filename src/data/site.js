@@ -46,27 +46,30 @@ export const site = {
     cards: [
       {
         title: 'Elara App',
-        description: 'Full-stack web application for everyday financial management.',
-        href: 'https://github.com/andresbetov/elara-app',
+        description:
+          'Full-stack web application for everyday financial management.',
+        href: 'https://github.com/andresbetov/AutomatedAudit-Frontend',
       },
       {
         title: 'hierarchical-clustering-portfolio-selector',
-        description: 'Portfolio selection tool that groups assets with hierarchical clustering.',
+        description:
+          'Portfolio selection tool that groups assets with hierarchical clustering.',
         href: 'https://github.com/andresbetov/hierarchical-clustering-portfolio-selector',
       },
       {
         title: 'xai-financial-predictor-engine',
         description: 'Financial prediction engine with explainable AI outputs.',
-        href: 'https://github.com/andresbetov/xai-financial-predictor-engine',
+        href: 'https://github.com/andresbetov/hybrid-fin-inference-agent-in-bvc',
       },
     ],
   },
-  sections: [
-    { id: 'about', title: 'About' },
-    { id: 'skills', title: 'Skills' },
-    { id: 'projects', title: 'Projects' },
-    { id: 'contact', title: 'Contact' },
-  ],
+  contact: {
+    title: 'Contact',
+    message:
+      'Have a project in mind or want to talk about data and space? Let’s connect.',
+    ctaLabel: 'Connect on LinkedIn',
+    href: 'https://www.linkedin.com/in/andresbetov/',
+  },
   socials: [
     { label: 'GitHub', href: 'https://github.com/andresbetov' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/andresbetov/' },
