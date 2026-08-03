@@ -23,19 +23,19 @@
 - [x] feat-011 - About section (bio lead/summary + 3 fact cards, Card spec, 3-col -> 1-col grid); commit `45a7544`, PR #10 open; Sections wrapped in 1120px centered container (conformance); vitest 4/1, e2e 9/1 stable
 - [x] feat-012 - Skills section (Backend/Frontend/Data-Quant card grid, Card spec, accent dot markers); commit `4842539`; vitest 4/1, e2e 9/1 stable
 - [x] feat-013 - Projects section (3 cards: Elara App, hierarchical-clustering-portfolio-selector, xai-financial-predictor-engine; one-line descriptions + GitHub links); gates scoped to #projects (ADR-011); commit `793f9b1`; vitest 5/5, e2e 10/10 - ALL GATES GREEN
-- [x] feat-014 - Contact section (heading, short message, primary CTA to LinkedIn); project links corrected to real repos (AutomatedAudit-Frontend, hybrid-fin-inference-agent-in-bvc) verified via GitHub API; removed dead site.sections + Section map (all sections now components); commit `f5f6085`; vitest 5/5, e2e 10/10
+- [x] feat-014 - Contact section (heading, short message, primary CTA to LinkedIn); project links corrected to real repos (AutomatedAudit-Frontend, hybrid-fin-inference-agent-in-bvc) verified via GitHub API; removed dead site.sections + Section map (all sections now components); commit `f5f6085`, merged via PR #13 (`065be81`); vitest 5/5, e2e 10/10
+- [x] feat-015 - Responsive layout: tablet 768-1024 two-column grids (About facts, Skills cards, Projects cards) via max-width 1024px; mobile navbar now an intentional stacked layout (logo row + full-width links row, space-between, tighter gaps, no per-link wrapping, overflow 0 at 320/390 - was wrapping haphazardly before); mobile scroll-margin-top bumped to 96px for the taller nav; commit `8c4a7a7`; vitest 5/5, e2e 10/10, lint+build+prettier green; breakpoints audit-verified at 768/1024/1025/1440
 - [x] Merge policy (ADR-008): until feat-018, lint+build green suffices; test step red by design
 - [x] Design system defined: docs/design-system.md (Platzi-inspired dark theme tokens)
 - [x] Verification suite prepared: Vitest smoke tests + Playwright specs + configs (red until app code exists)
 
 ### What's In Progress
 
-- Nothing in progress
+- Nothing in progress (feat-015 committed as `8c4a7a7`, pending PR merge)
 
 ### What's Next
 
-1. feat-015 - Responsive layout (breakpoints 768/1024px: grids collapse, navbar links readable)
-2. feat-016 - (per feature_list.json)
+1. feat-016 - Hover and motion states (150-200ms ease transitions, hover on buttons/cards/links, prefers-reduced-motion respected)
 
 ## Blockers / Risks
 
@@ -61,10 +61,10 @@
 
 ## Files Modified This Session
 
-- `src/components/Contact/` - feat-014 contact section (jsx + module.css, new)
-- `src/data/site.js` - added site.contact; fixed project hrefs to real repos; removed dead site.sections
-- `src/App.jsx` - direct composition (About/Skills/Projects/Contact), no shell map
-- `feature_list.json` - feat-014 done (f5f6085), feat-015 active
+- `src/components/{About,Skills,Projects}/*.module.css` - tablet 2-col grids (max-width 1024px)
+- `src/components/Navbar/Navbar.module.css` - mobile stacked layout (wrap, links full-width row, space-between, gap 8px, tighter padding)
+- `src/components/Section/Section.module.css` - mobile scroll-margin-top 96px
+- `feature_list.json` - feat-015 done (8c4a7a7), feat-016 active
 - `progress.md`, `session-handoff.md` - session records
 
 ## Evidence of Completion
@@ -73,24 +73,30 @@
 - [x] Lint clean: `npm run lint` (eslint .) passes
 - [x] Build passes: `vite build`, dist/ generated
 - [x] Prettier clean: `npx prettier --check` on changed files
-- [x] Tests pass: 4 passed / 1 failed [projects gate - green at feat-013; red by design until then]
-- [x] e2e regression (from feat-008): 9 passed / 1 failed (projects by design); no console errors, no overflow
+- [x] Tests pass: 5 passed (5) - ALL GREEN since feat-013
+- [x] e2e regression: 10 passed (10) - ALL GREEN since feat-013; screenshots captured at 1440/390
+- [x] Responsive audit (temp playwright spec): overflow 0 at 320/390/768/1024/1025/1440; nav fits at all widths; grids 1-col <=767, 2-col 768-1024, 3-col 1025+
 
-## Known Conflict (deferred to feat-013)
+## Known Conflict (resolved at feat-013)
 
-- Footer GitHub link (https://github.com/andresbetov) matches the projects tests'
-  prefix filter (a[href^="https://github.com/andresbetov"]). With 3 project cards
-  the document will have 4 matching links, failing the "exactly 3" gates. Must be
-  resolved when building the projects section (feat-013).
+- Footer GitHub link (https://github.com/andresbetov) matched the projects tests'
+  prefix filter; resolved by scoping gates to #projects (ADR-011).
 
 ## Notes for Next Session
 
 - Startup: read AGENTS.md, feature_list.json, progress.md, docs/decisions.md,
-  session-handoff.md, then run ./init.sh (note: test step aborts init.sh by
-  design until feat-018; run npm run build separately).
-- Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22).
-- feat-012 on feat/feat-012-skills-section (PR #11, not yet merged); next: feat-013 projects + count conflict.
+  session-handoff.md, then run ./init.sh.
+- Runtime: Node 22 LTS (`.nvmrc` 22, ci.yml node-version 22, engines >=22);
+  system node is v26.5.0 - module type: ESM (package.json `"type": "module"`).
+- Subagent infra (ui-designer / qa-visual-tester) still down: session-insert DB
+  error on spawn; audit manually at code level.
+- Working audit recipe (feat-015): temp spec inside `e2e/` (config testDir is
+  e2e; explicit outside paths are ignored), run `npx playwright test <name>
+--reporter=line` (auto-starts dev server via webServer), delete the temp
+  spec; never touch e2e/portfolio.spec.js.
+- feat-016 next: hover + motion states (transitions 150ms color/border, 200ms
+  transform; buttons/cards/links; prefers-reduced-motion already handled
+  globally in index.css).
 - Copy caution: content must avoid "software engineer" phrase (hero vitest gate).
-- ui-designer/qa-visual-tester subagents down (DB error) - code-level audits only.
-- tests/setup.js cleans up after each test (RTL auto-cleanup needed globals).
-- feat-013 count conflict: see 'Known Conflict' above.
+- Project repo hrefs verified real (feat-014): AutomatedAudit-Frontend,
+  hierarchical-clustering-portfolio-selector, hybrid-fin-inference-agent-in-bvc.
